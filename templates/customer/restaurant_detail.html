@@ -1,0 +1,283 @@
+{% extends "base.html" %}
+
+{% block title %}{{ restaurant.name }} - JustEat{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <!-- Restaurant Header -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h1 class="display-6 fw-bold">{{ restaurant.name }}</h1>
+                            <p class="lead text-muted">{{ restaurant.description }}</p>
+                            <div class="d-flex flex-wrap gap-2 mb-3">
+                                <span class="badge bg-primary">{{ restaurant.cuisine_type }}</span>
+                                {% if avg_rating > 0 %}
+                                    <span class="badge bg-warning">
+                                        <i class="fas fa-star me-1"></i>{{ avg_rating }}/5
+                                    </span>
+                                {% endif %}
+                            </div>
+                            <div class="row text-muted">
+                                <div class="col-sm-6">
+                                    <i class="fas fa-clock me-2"></i>
+                                    {% if restaurant.opening_time and restaurant.closing_time %}
+                                        {{ restaurant.opening_time.strftime('%I:%M %p') }} - {{ restaurant.closing_time.strftime('%I:%M %p') }}
+                                    {% else %}
+                                        Hours not set
+                                    {% endif %}
+                                </div>
+                                <div class="col-sm-6">
+                                    <i class="fas fa-phone me-2"></i>{{ restaurant.phone or 'Phone not available' }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-end">
+                            <div class="d-flex gap-2">
+                                <a href="{{ url_for('customer.add_review', restaurant_id=restaurant.id) }}" 
+                                   class="btn btn-outline-warning">
+                                    <i class="fas fa-star me-1"></i>Review
+                                </a>
+                                <a href="{{ url_for('customer.view_cart') }}" class="btn btn-primary">
+                                    <i class="fas fa-shopping-cart me-1"></i>View Cart
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Menu Items -->
+        <div class="col-lg-8">
+            <!-- Filters -->
+            <div class="mb-4">
+                <form method="get" action="{{ url_for('customer.view_restaurant', restaurant_id=restaurant.id) }}" class="row g-3 align-items-end">
+                    <!-- Veg/Non-Veg Filter -->
+                    <div class="col-md-4">
+                        <label for="diet_filter" class="form-label fw-bold">Show</label>
+                        <select name="diet_filter" id="diet_filter" class="form-select">
+                            <option value="all" {% if diet_filter == 'all' %}selected{% endif %}>All</option>
+                            <option value="veg" {% if diet_filter == 'veg' %}selected{% endif %}>Veg</option>
+                            <option value="non-veg" {% if diet_filter == 'non-veg' %}selected{% endif %}>Non-Veg</option>
+                        </select>
+                    </div>
+
+                    <!-- Price Filter -->
+                    <div class="col-md-4">
+                        <label for="price_filter" class="form-label fw-bold">Price</label>
+                        <select name="price_filter" id="price_filter" class="form-select">
+                            <option value="" {% if not price_filter or price_filter == 'all' %}selected{% endif %}>All</option>
+                            <option value="0-200" {% if price_filter == '0-200' %}selected{% endif %}>₹0 - ₹200</option>
+                            <option value="201-500" {% if price_filter == '201-500' %}selected{% endif %}>₹201 - ₹500</option>
+                            <option value="501-1000" {% if price_filter == '501-1000' %}selected{% endif %}>₹501 - ₹1,000</option>
+                            <option value="1001-1500" {% if price_filter == '1001-1500' %}selected{% endif %}>₹1,001 - ₹1,500</option>
+                            <option value="1501+" {% if price_filter == '1501+' %}selected{% endif %}>₹1,501+</option>
+                        </select>
+                    </div>
+
+                    <!-- Apply Button -->
+                    <div class="col-md-4 d-flex">
+                        <button type="submit" class="btn btn-primary align-self-end w-100">Apply</button>
+                    </div>
+                </form>
+
+            </div>
+
+            <!-- No items message -->
+            {% if no_items %}
+                <div class="alert alert-warning text-center">
+                    No items found in this price range.
+                </div>
+            {% endif %}
+
+            <!-- Menu items grouped by category -->
+            {% for category, items in menu_by_category.items() %}
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">{{ category }}</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        {% for item in items %}
+                        <div class="col-12">
+                            <div class="menu-item-card p-3">
+                                <div class="row align-items-center">
+                                    <div class="col-md-8">
+                                        <div class="d-flex align-items-start">
+                                            <div class="flex-shrink-0 me-3">
+                                                <div class="flex-shrink-0 me-3">
+                                                    {% if item.image_url %}
+                                                        <img src="{{ url_for('static', filename=item.image_url) }}" 
+                                                            class="menu-item-image" alt="{{ item.name }}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 5px;">
+                                                    {% else %}
+                                                        <img src="{{ url_for('static', filename='images/default_menu_item.jpg') }}" 
+                                                            class="menu-item-image" alt="Default Menu Item" style="width: 80px; height: 80px; object-fit: cover; border-radius: 5px;">
+                                                    {% endif %}
+                                                </div>
+
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <h6 class="mb-1 d-flex align-items-center">
+                                                    {{ item.name }}
+                                                    
+                                                    <!-- Diet type badge -->
+                                                    {% if item.diet_type == 'veg' %}
+                                                        <span class="badge bg-success ms-2">Veg</span>
+                                                    {% elif item.diet_type == 'non-veg' %}
+                                                        <span class="badge bg-danger ms-2">Non-Veg</span>
+                                                    {% endif %}
+
+                                                    {% if item.is_special %}
+                                                        <span class="badge badge-special ms-2">Today's Special</span>
+                                                    {% endif %}
+                                                    {% if item.is_deal_of_day %}
+                                                        <span class="badge badge-deal ms-2">Deal of the Day</span>
+                                                    {% endif %}
+                                                    {% if item.mostly_ordered %}
+                                                        <span class="badge badge-popular ms-2">Mostly Ordered</span>
+                                                    {% endif %}
+                                                </h6>
+                                                <p class="text-muted mb-2">{{ item.description }}</p>
+                                                <small class="text-muted">
+                                                    <i class="fas fa-clock me-1"></i>{{ item.preparation_time }} min
+                                                </small>
+
+                                                <!-- Menu Item Average Review -->
+                                                {% if item.reviews %}
+                                                <div class="mt-2">
+                                                    <strong>Average Rating:</strong>
+                                                    {% set total = item.reviews | map(attribute='rating') | sum %}
+                                                    {% set count = item.reviews | length %}
+                                                    {% set avg_rating = (total / count) if count > 0 else 0 %}
+                                                    
+                                                    <span class="text-warning">
+                                                        {% for i in range(avg_rating|round(0, 'floor')|int) %}
+                                                            <i class="fas fa-star"></i>
+                                                        {% endfor %}
+                                                        {% for i in range(5 - (avg_rating|round(0, 'floor')|int)) %}
+                                                            <i class="far fa-star"></i>
+                                                        {% endfor %}
+                                                    </span>
+                                                    <small class="text-muted">({{ avg_rating|round(1) }}/5, {{ count }} review{{ 's' if count > 1 else '' }})</small>
+                                                </div>
+                                                {% endif %}
+
+
+
+                                                <!-- Add Menu Item Review Button -->
+                                                <div class="mt-2">
+                                                    <a href="{{ url_for('customer.add_menu_item_review', menu_item_id=item.id) }}"
+                                                       class="btn btn-outline-primary btn-sm">
+                                                       Add Review
+                                                    </a>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 text-end">
+                                        <div class="d-flex align-items-center justify-content-end">
+                                            <div class="me-3">
+                                                <h5 class="mb-0 text-primary">₹{{ "%.2f"|format(item.price) }}</h5>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <div class="input-group" style="width: 120px;">
+                                                    <button type="button" class="btn btn-outline-secondary btn-sm quantity-btn quantity-minus">-</button>
+                                                    <input type="number" class="form-control form-control-lg text-center" id="quantity-{{ item.id }}" value="1" min="1" max="99">
+                                                    <button type="button" class="btn btn-outline-secondary btn-sm quantity-btn quantity-plus">+</button>
+                                                </div>
+                                                <button class="btn btn-success btn-sm ms-2 add-to-cart" 
+                                                        data-menu-item-id="{{ item.id }}">
+                                                    <i class="fas fa-cart-plus"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Reviews Sidebar -->
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Recent Reviews</h5>
+                </div>
+                <div class="card-body">
+                    {% if reviews %}
+                        {% for review in reviews %}
+                        <div class="mb-3 pb-3 border-bottom">
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="flex-shrink-0">
+                                    <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" 
+                                         style="width: 40px; height: 40px;">
+                                        {{ review.user.first_name[0] }}
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                    <h6 class="mb-0">{{ review.user.first_name }} {{ review.user.last_name }}</h6>
+                                    <div class="text-warning">
+                                        {% for i in range(review.rating) %}
+                                            <i class="fas fa-star"></i>
+                                        {% endfor %}
+                                        {% for i in range(5 - review.rating) %}
+                                            <i class="far fa-star"></i>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            {% if review.comment %}
+                                <p class="text-muted mb-0">{{ review.comment }}</p>
+                            {% endif %}
+                            <small class="text-muted">{{ review.created_at.strftime('%d/%m/%Y') }}</small>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="text-center py-3">
+                            <i class="fas fa-comments fa-2x text-muted mb-2"></i>
+                            <p class="text-muted mb-0">No reviews yet</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+$(document).ready(function() {
+    // Use .off() first to prevent duplicate bindings
+    $('.quantity-btn').off('click').on('click', function(e) {
+        e.preventDefault();
+
+        const button = $(this);
+        const input = button.closest('.input-group').find('input[type="number"]');
+        let currentValue = parseInt(input.val()) || 1;
+        const min = parseInt(input.attr('min')) || 1;
+        const max = parseInt(input.attr('max')) || 99;
+
+        if (button.hasClass('quantity-plus') && currentValue < max) {
+            currentValue++;
+        } else if (button.hasClass('quantity-minus') && currentValue > min) {
+            currentValue--;
+        }
+
+        input.val(currentValue);
+    });
+});
+</script>
+{% endblock %}

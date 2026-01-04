@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+
+{% block title %}Preferences - JustEat{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="display-5 fw-bold">My Preferences</h1>
+            <p class="lead text-muted">Customize your food preferences and dietary restrictions</p>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-lg-8">
+            <form method="POST">
+                <!-- Cuisine Preferences -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0">Favorite Cuisines</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-muted">Select your favorite types of cuisine to get better recommendations.</p>
+                        <div class="row">
+                            {% for cuisine in cuisine_types %}
+                            <div class="col-md-4 col-sm-6 mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" 
+                                           name="cuisine_preferences" value="{{ cuisine }}" 
+                                           id="cuisine_{{ cuisine }}"
+                                           {% if cuisine in cuisine_prefs %}checked{% endif %}>
+                                    <label class="form-check-label" for="cuisine_{{ cuisine }}">
+                                        {{ cuisine }}
+                                    </label>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Dietary Restrictions -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0">Dietary Restrictions</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-muted">Let us know about any dietary restrictions or preferences you have.</p>
+                        <div class="row">
+                            {% for dietary in dietary_options %}
+                            <div class="col-md-4 col-sm-6 mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" 
+                                           name="dietary_restrictions" value="{{ dietary }}" 
+                                           id="dietary_{{ dietary }}"
+                                           {% if dietary in dietary_prefs %}checked{% endif %}>
+                                    <label class="form-check-label" for="dietary_{{ dietary }}">
+                                        {{ dietary }}
+                                    </label>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Favorite Restaurants -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0">Favorite Restaurants</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-muted">Choose your favorite restaurants to quickly find them later.</p>
+                        <div class="row">
+                            {% for restaurant in restaurants %}
+                            <div class="col-md-6 col-sm-12 mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox"
+                                           name="favorite_restaurants" value="{{ restaurant.id }}"
+                                           id="restaurant_{{ restaurant.id }}"
+                                           {% if restaurant.id|string in restaurant_prefs %}checked{% endif %}>
+                                    <label class="form-check-label" for="restaurant_{{ restaurant.id }}">
+                                        {{ restaurant.name }}
+                                    </label>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Save & Cancel -->
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save me-2"></i>Save Preferences
+                    </button>
+                    <a href="{{ url_for('customer.dashboard') }}" class="btn btn-outline-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+        
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">How Preferences Help</h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled">
+                        <li class="mb-3">
+                            <i class="fas fa-star text-warning me-2"></i>
+                            <strong>Better Recommendations:</strong> Get personalized restaurant and menu suggestions
+                        </li>
+                        <li class="mb-3">
+                            <i class="fas fa-filter text-info me-2"></i>
+                            <strong>Smart Filtering:</strong> Automatically filter out items that don't match your preferences
+                        </li>
+                        <li class="mb-3">
+                            <i class="fas fa-bell text-success me-2"></i>
+                            <strong>Special Offers:</strong> Receive notifications about deals on your favorite cuisines
+                        </li>
+                        <li class="mb-3">
+                            <i class="fas fa-heart text-danger me-2"></i>
+                            <strong>Favorites:</strong> Save your favorite restaurants and dishes for quick access
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card mt-3">
+                <div class="card-header">
+                    <h5 class="mb-0">Quick Actions</h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-grid gap-2">
+                        <a href="{{ url_for('customer.recommendations') }}" class="btn btn-outline-primary">
+                            <i class="fas fa-lightbulb me-2"></i>View Recommendations
+                        </a>
+                        <a href="{{ url_for('customer.browse_restaurants') }}" class="btn btn-outline-success">
+                            <i class="fas fa-utensils me-2"></i>Browse Restaurants
+                        </a>
+                        <a href="{{ url_for('customer.profile') }}" class="btn btn-outline-info">
+                            <i class="fas fa-user me-2"></i>Edit Profile
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,227 @@
+{% extends "base.html" %} {% block title %}Order Details - JustEat{% endblock %}
+{% block content %}
+<div class="container py-4">
+  <div class="row mb-4">
+    <div class="col-12">
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <h1 class="display-6 fw-bold">Order Details</h1>
+          <p class="lead text-muted">Order #{{ order.order_number }}</p>
+        </div>
+        <div>
+          <span
+            class="badge bg-{{ 'success' if order.status == 'delivered' else 'warning' if order.status in ['pending', 'confirmed', 'preparing'] else 'danger' }} fs-6"
+          >
+            {{ order.status.title() }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- Order Items -->
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0">Order Items</h5>
+        </div>
+        <div class="card-body p-0">
+          {% for item in order.order_items %}
+          <div class="p-4 border-bottom">
+            <div class="row align-items-center">
+              <div class="col-md-2">
+                <div
+                  class="menu-item-image d-flex align-items-center justify-content-center bg-light rounded"
+                  style="width: 60px; height: 60px; overflow: hidden"
+                >
+                  {% if item.menu_item.image_url %}
+                  <img
+                    src="{{ url_for('static', filename=item.menu_item.image_url) }}"
+                    alt="{{ item.menu_item.name }}"
+                    class="img-fluid h-100 w-100 object-fit-cover"
+                  />
+                  {% else %}
+                  <i class="fas fa-utensils text-muted"></i>
+                  {% endif %}
+                </div>
+              </div>
+              <div class="col-md-6">
+                <h6 class="mb-1">{{ item.menu_item.name }}</h6>
+                <p class="text-muted mb-0">
+                  {{ item.menu_item.description[:50] }}...
+                </p>
+                <small class="text-muted">Quantity: {{ item.quantity }}</small>
+              </div>
+              <div class="col-md-2 text-center">
+                <small class="text-muted"
+                  >₹{{ "%.2f"|format(item.price) }} each</small
+                >
+              </div>
+              <div class="col-md-2 text-end">
+                <h6 class="mb-0 text-primary">
+                  ₹{{ "%.2f"|format(item.price * item.quantity) }}
+                </h6>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <!-- Order Summary -->
+    <div class="col-lg-4">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0">Order Summary</h5>
+        </div>
+        <div class="card-body">
+          <div class="mb-3">
+            <h6>Restaurant</h6>
+            <div class="d-flex align-items-center">
+              <i class="fas fa-store text-primary me-2"></i>
+              <span>{{ order.restaurant.name }}</span>
+            </div>
+            <small class="text-muted">{{ order.restaurant.address }}</small>
+          </div>
+
+          <div class="mb-3">
+            <h6>Order Status</h6>
+            <div class="progress mb-2">
+              {% set progress = {'pending': 20, 'confirmed': 40, 'preparing':
+              60, 'ready': 80, 'delivered': 100, 'cancelled': 0} %}
+              <div
+                class="progress-bar bg-{{ 'success' if order.status == 'delivered' else 'warning' if order.status in ['pending', 'confirmed', 'preparing'] else 'danger' }}"
+                style="width: {{ progress[order.status] }}%"
+              ></div>
+            </div>
+            <small class="text-muted">{{ order.status.title() }}</small>
+          </div>
+
+          <div class="mb-3">
+            <h6>Order Timeline</h6>
+            <div class="timeline">
+              <div
+                class="timeline-item {{ 'active' if order.status in ['pending', 'confirmed', 'preparing', 'ready', 'delivered'] else '' }}"
+              >
+                <small class="texat-muted">Order Placed</small><br />
+                <small>{{ order.created_at | datetime_ist }}</small>
+              </div>
+              {% if order.status in ['confirmed', 'preparing', 'ready',
+              'delivered'] %}
+              <div
+                class="timeline-item {{ 'active' if order.status in ['preparing', 'ready', 'delivered'] else '' }}"
+              >
+                <small class="text-muted">Confirmed</small><br />
+                <small
+                  >{{ order.updated_at.strftime('%m/%d/%Y %I:%M %p') }}</small
+                >
+              </div>
+              {% endif %} {% if order.status in ['ready', 'delivered'] %}
+              <div
+                class="timeline-item {{ 'active' if order.status == 'delivered' else '' }}"
+              >
+                <small class="text-muted">Ready for Pickup</small><br />
+                <small
+                  >{{ order.updated_at.strftime('%m/%d/%Y %I:%M %p') }}</small
+                >
+              </div>
+              {% endif %}
+            </div>
+          </div>
+
+          <hr />
+
+          <div class="d-flex justify-content-between mb-2">
+            <span>Subtotal:</span>
+            <span>₹{{ "%.2f"|format(order.total_amount) }}</span>
+          </div>
+          <div class="d-flex justify-content-between mb-2">
+            <span>Tax:</span>
+            <span>₹0.00</span>
+          </div>
+          <div class="d-flex justify-content-between mb-2">
+            <span>Delivery Fee:</span>
+            <span>₹0.00</span>
+          </div>
+          <hr />
+          <div class="d-flex justify-content-between mb-3">
+            <strong>Total:</strong>
+            <strong class="text-primary"
+              >₹{{ "%.2f"|format(order.total_amount) }}</strong
+            >
+          </div>
+
+          {% if order.notes %}
+          <div class="mb-3">
+            <h6>Special Instructions</h6>
+            <p class="text-muted">{{ order.notes }}</p>
+          </div>
+          {% endif %}
+
+          <div class="d-grid gap-2">
+            <a
+              href="{{ url_for('customer.order_history') }}"
+              class="btn btn-outline-secondary"
+            >
+              <i class="fas fa-arrow-left me-2"></i>Back to Orders
+            </a>
+            {% if order.status == 'delivered' %}
+            <a
+              href="{{ url_for('customer.add_review', restaurant_id=order.restaurant.id) }}"
+              class="btn btn-warning"
+            >
+              <i class="fas fa-star me-2"></i>Leave Review
+            </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .timeline {
+    position: relative;
+    padding-left: 20px;
+  }
+
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #e9ecef;
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 15px;
+    padding-left: 20px;
+  }
+
+  .timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -6px;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #e9ecef;
+    border: 2px solid #fff;
+  }
+
+  .timeline-item.active::before {
+    background: #007bff;
+  }
+
+  .timeline-item.active {
+    color: #007bff;
+  }
+</style>
+{% endblock %}

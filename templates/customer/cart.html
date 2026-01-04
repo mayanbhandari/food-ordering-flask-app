@@ -1,0 +1,261 @@
+{% extends "base.html" %} {% block title %}Shopping Cart - JustEat{% endblock %}
+{% block content %}
+<div class="container py-4">
+  <div class="row mb-4">
+    <div class="col-12">
+      <h1 class="display-5 fw-bold">Shopping Cart</h1>
+      <p class="lead text-muted">Review your order before checkout</p>
+    </div>
+  </div>
+
+  {% if cart_items %}
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0">Cart Items</h5>
+        </div>
+        <div class="card-body p-0">
+          {% for item in cart_items %}
+          <div class="cart-item p-4">
+            <div class="row align-items-center">
+              <div class="col-md-2">
+                {% if item.menu_item.image_url %}
+                <img
+                  src="{{ url_for('static', filename=item.menu_item.image_url) }}"
+                  class="menu-item-image"
+                  alt="{{ item.menu_item.name }}"
+                  style="
+                    width: 60px;
+                    height: 60px;
+                    object-fit: cover;
+                    border-radius: 5px;
+                  "
+                />
+                {% else %}
+                <img
+                  src="{{ url_for('static', filename='images/default_menu_item.jpg') }}"
+                  class="menu-item-image"
+                  alt="Default Menu Item"
+                  style="
+                    width: 60px;
+                    height: 60px;
+                    object-fit: cover;
+                    border-radius: 5px;
+                  "
+                />
+                {% endif %}
+              </div>
+
+              <div class="col-md-4">
+                <h6 class="mb-1">{{ item.menu_item.name }}</h6>
+                <p class="text-muted mb-0">
+                  {{ item.menu_item.restaurant.name }}
+                </p>
+                <small class="text-muted"
+                  >{{ item.menu_item.description[:50] }}...</small
+                >
+              </div>
+              <div class="col-md-2">
+                <div class="input-group" style="width: 100px">
+                  <button
+                    class="btn btn-outline-secondary btn-sm cart-quantity-btn cart-quantity-minus"
+                    type="button"
+                  >
+                    -
+                  </button>
+                  <input
+                    type="number"
+                    class="form-control form-control-sm text-center update-cart-quantity"
+                    value="{{ item.quantity }}"
+                    min="1"
+                    max="99"
+                    data-cart-item-id="{{ item.id }}"
+                  />
+                  <button
+                    class="btn btn-outline-secondary btn-sm cart-quantity-btn cart-quantity-plus"
+                    type="button"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+              <div class="col-md-2 text-center">
+                <h6 class="mb-0 text-primary">
+                  ₹{{ "%.2f"|format(item.menu_item.price) }}
+                </h6>
+              </div>
+              <div class="col-md-2 text-center">
+                <h6 class="mb-0">
+                  ₹{{ "%.2f"|format(item.menu_item.price * item.quantity) }}
+                </h6>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-12 text-end">
+                <a
+                  href="{{ url_for('customer.remove_from_cart', cart_item_id=item.id) }}"
+                  class="btn btn-outline-danger btn-sm"
+                  onclick="return confirm('Remove this item from cart?')"
+                >
+                  <i class="fas fa-trash me-1"></i>Remove
+                </a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0">Order Summary</h5>
+        </div>
+        <div class="card-body">
+          <div class="d-flex justify-content-between mb-2">
+            <span>Subtotal:</span>
+            <span>₹{{ "%.2f"|format(total) }}</span>
+          </div>
+          <div class="d-flex justify-content-between mb-2">
+            <span>Tax:</span>
+            <span>₹0.00</span>
+          </div>
+          <div class="d-flex justify-content-between mb-2">
+            <span>Delivery Fee:</span>
+            <span>₹0.00</span>
+          </div>
+          <hr />
+          <div class="d-flex justify-content-between mb-3">
+            <strong>Total:</strong>
+            <strong class="text-primary">₹{{ "%.2f"|format(total) }}</strong>
+          </div>
+
+          <div class="d-grid gap-2">
+            <button
+              id="place-order"
+              type="button"
+              class="btn btn-primary btn-lg"
+            >
+              <i class="fas fa-check me-2"></i>Place Order
+            </button>
+            <a
+              href="{{ url_for('customer.browse_restaurants') }}"
+              class="btn btn-outline-secondary"
+            >
+              <i class="fas fa-plus me-2"></i>Add More Items
+            </a>
+          </div>
+
+          <div class="mt-3">
+            <small class="text-muted">
+              <i class="fas fa-info-circle me-1"></i>
+              Your order will be prepared and delivered to your address.
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% else %}
+  <div class="row">
+    <div class="col-12">
+      <div class="text-center py-5">
+        <i class="fas fa-shopping-cart fa-4x text-muted mb-4"></i>
+        <h3>Your cart is empty</h3>
+        <p class="text-muted mb-4">Add some delicious items to get started!</p>
+        <a
+          href="{{ url_for('customer.browse_restaurants') }}"
+          class="btn btn-primary btn-lg"
+        >
+          <i class="fas fa-utensils me-2"></i>Browse Restaurants
+        </a>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</div>
+{% endblock %} {% block extra_js %}
+<script>
+  $(document).ready(function () {
+    // Quantity controls
+    $(".quantity-btn").on("click", function (e) {
+      e.preventDefault();
+      const button = $(this);
+      const input = button.siblings('input[type="number"]');
+      const currentValue = parseInt(input.val()) || 1;
+      const min = parseInt(input.attr("min")) || 1;
+      const max = parseInt(input.attr("max")) || 99;
+
+      if (button.hasClass("quantity-plus")) {
+        if (currentValue < max) {
+          input.val(currentValue + 1);
+          input.trigger("change"); // Trigger change event for cart update
+        }
+      } else if (button.hasClass("quantity-minus")) {
+        if (currentValue > min) {
+          input.val(currentValue - 1);
+          input.trigger("change"); // Trigger change event for cart update
+        }
+      }
+    });
+
+    // Place order button (AJAX + SweetAlert2)
+    $("#place-order").on("click", function (e) {
+      e.preventDefault();
+
+      const button = $(this);
+      const originalText = button.html();
+
+      // Disable button and show loading
+      button.prop("disabled", true);
+      button.html(
+        '<i class="fas fa-spinner fa-spin me-2"></i>Placing Order...'
+      );
+
+      $.ajax({
+        url: "{{ url_for('customer.place_order') }}",
+        method: "POST",
+        data: {
+          csrf_token: $("meta[name=csrf-token]").attr("content"),
+        },
+        success: function (response) {
+          if (response.success) {
+            Swal.fire({
+              icon: "success",
+              title: "Order placed successfully! 🎉",
+              text: response.message || "Your food is on the way 🚀",
+              showConfirmButton: false,
+              timer: 2000,
+              toast: true,
+              position: "top-end",
+            });
+
+            setTimeout(() => {
+              window.location.href = "{{ url_for('customer.order_history') }}";
+            }, 2000);
+          } else {
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: response.message || "Something went wrong!",
+              confirmButtonColor: "#d33",
+            });
+            button.prop("disabled", false).html(originalText);
+          }
+        },
+        error: function () {
+          Swal.fire({
+            icon: "error",
+            title: "Server Error",
+            text: "Could not place order. Please try again.",
+            confirmButtonColor: "#d33",
+          });
+          button.prop("disabled", false).html(originalText);
+        },
+      });
+    });
+  });
+</script>
+{% endblock %}

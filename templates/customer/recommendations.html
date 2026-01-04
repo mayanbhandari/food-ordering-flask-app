@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+
+{% block title %}Recommendations - JustEat{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="mb-4">
+                <i class="fas fa-star me-2"></i>Smart Recommendations
+            </h2>
+        </div>
+    </div>
+
+    <!-- Favorite Cuisines -->
+    {% if favorite_cuisines %}
+    <div class="row mb-4">
+        <div class="col-12">
+            <h4 class="mb-3">Your Favorite Cuisines</h4>
+            <div class="d-flex flex-wrap gap-2">
+                {% for cuisine in favorite_cuisines %}
+                <span class="badge bg-primary fs-6">{{ cuisine }}</span>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Dietary Restrictions -->
+    {% if dietary_restrictions %}
+    <div class="row mb-4">
+        <div class="col-12">
+            <h4 class="mb-3">Your Dietary Restrictions</h4>
+            <div class="d-flex flex-wrap gap-2">
+                {% for restriction in dietary_restrictions %}
+                <span class="badge bg-secondary fs-6">{{ restriction }}</span>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Recommended Restaurants -->
+    {% if recommended_restaurants %}
+    <div class="row mb-4">
+        <div class="col-12">
+            <h4 class="mb-3">Recommended for You</h4>
+            <div class="row">
+                {% for restaurant in recommended_restaurants %}
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ restaurant.name }}</h5>
+                            <p class="card-text text-muted">{{ restaurant.cuisine_type }}</p>
+                            <p class="card-text">{{ restaurant.description[:100] }}...</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="badge bg-success">{{ restaurant.cuisine_type }}</span>
+                                <a href="{{ url_for('customer.view_restaurant', restaurant_id=restaurant.id) }}" 
+                                   class="btn btn-primary btn-sm">View Menu</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Popular Restaurants -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <h4 class="mb-3">Popular Restaurants</h4>
+            <div class="row">
+                {% for restaurant in popular_restaurants %}
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ restaurant.name }}</h5>
+                            <p class="card-text text-muted">{{ restaurant.cuisine_type }}</p>
+                            <p class="card-text">{{ restaurant.description[:100] }}...</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="badge bg-warning">Popular</span>
+                                <a href="{{ url_for('customer.view_restaurant', restaurant_id=restaurant.id) }}" 
+                                   class="btn btn-primary btn-sm">View Menu</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Special Items -->
+    {% if special_items %}
+    <div class="row mb-4">
+        <div class="col-12">
+            <h4 class="mb-3">Today's Specials</h4>
+            <div class="row">
+                {% for item in special_items %}
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ item.name }}</h5>
+                            <p class="card-text text-muted">{{ item.restaurant.name }}</p>
+                            <p class="card-text">{{ item.description[:100] }}...</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="badge bg-danger">Special</span>
+                                <span class="h5 text-success">₹{{ "%.2f"|format(item.price) }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Deal of the Day -->
+    {% if deal_items %}
+    <div class="row mb-4">
+        <div class="col-12">
+            <h4 class="mb-3">Deal of the Day</h4>
+            <div class="row">
+                {% for item in deal_items %}
+                <div class="col-md-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ item.name }}</h5>
+                            <p class="card-text text-muted">{{ item.restaurant.name }}</p>
+                            <p class="card-text">{{ item.description[:100] }}...</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="badge bg-info">Deal</span>
+                                <span class="h5 text-success">₹{{ "%.2f"|format(item.price) }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- No Recommendations Message -->
+    {% if not recommended_restaurants and not special_items and not deal_items %}
+    <div class="row">
+        <div class="col-12">
+            <div class="alert alert-info text-center">
+                <h4>Start Ordering to Get Recommendations!</h4>
+                <p>Place some orders to help us understand your preferences and provide personalized recommendations.</p>
+                <a href="{{ url_for('restaurants') }}" class="btn btn-primary">Browse Restaurants</a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

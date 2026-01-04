@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - JustEat{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="display-5 fw-bold">Welcome back, {{ current_user.first_name }}!</h1>
+            <p class="lead text-muted">Here's what's happening with your orders</p>
+        </div>
+    </div>
+    
+    <!-- Quick Actions -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Quick Actions</h5>
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <a href="{{ url_for('customer.browse_restaurants') }}" class="btn btn-outline-primary w-100">
+                                <i class="fas fa-search me-2"></i>Browse Restaurants
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="{{ url_for('customer.view_cart') }}" class="btn btn-outline-success w-100">
+                                <i class="fas fa-shopping-cart me-2"></i>View Cart
+                            </a>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="{{ url_for('customer.order_history') }}" class="btn btn-outline-info w-100">
+                                <i class="fas fa-history me-2"></i>Order History
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <!-- Recent Orders -->
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Recent Orders</h5>
+                    <a href="{{ url_for('customer.order_history') }}" class="btn btn-sm btn-outline-primary">View All</a>
+                </div>
+                <div class="card-body">
+                    {% if recent_orders %}
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Order #</th>
+                                        <th>Restaurant</th>
+                                        <th>Total</th>
+                                        <th>Status</th>
+                                        <th>Date</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for order in recent_orders %}
+                                    <tr>
+                                        <td>{{ order.order_number }}</td>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    {% if order.restaurant.image_url %}
+                                                        <img src="{{ url_for('static', filename=order.restaurant.image_url) }}" 
+                                                            alt="{{ order.restaurant.name }}" class="rounded me-2" 
+                                                            style="width:40px; height:40px; object-fit:cover;">
+                                                    {% endif %}
+                                                    <span>{{ order.restaurant.name }}</span>
+                                                </div>
+                                            </td>
+
+                                        <td>₹{{ "%.2f"|format(order.total_amount) }}</td>
+                                        <td>
+                                            <span class="badge bg-{{ 'success' if order.status == 'delivered' else 'warning' if order.status in ['pending','confirmed','preparing'] else 'danger' }}">
+                                                {{ order.status.title() }}
+                                            </span>
+                                        </td>
+                                        <td>{{ order.created_at.strftime('%m/%d/%Y') }}</td>
+                                        <td>
+                                            <a href="{{ url_for('customer.view_order', order_id=order.id) }}" class="btn btn-sm btn-outline-primary">
+                                                View
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <div class="text-center py-4">
+                            <i class="fas fa-shopping-bag fa-3x text-muted mb-3"></i>
+                            <h5>No orders yet</h5>
+                            <p class="text-muted">Start by browsing our restaurants!</p>
+                            <a href="{{ url_for('customer.browse_restaurants') }}" class="btn btn-primary">
+                                Browse Restaurants
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+        <!-- Favorite Restaurants -->
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Favorite Restaurants</h5>
+                </div>
+                <div class="card-body">
+                    {% if favorite_restaurants %}
+                        {% for restaurant in favorite_restaurants %}
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="flex-shrink-0">
+                                {% if restaurant.image_url %}
+                                    <img src="{{ url_for('static', filename=restaurant.image_url) }}" 
+                                         alt="{{ restaurant.name }}" class="rounded" style="width:50px; height:50px; object-fit:cover;">
+                                {% else %}
+                                    <i class="fas fa-store fa-2x text-primary"></i>
+                                {% endif %}
+                            </div>
+                            <div class="flex-grow-1 ms-3">
+                                <h6 class="mb-1">{{ restaurant.name }}</h6>
+                                <small class="text-muted">{{ restaurant.cuisine_type }}</small>
+                            </div>
+                            <div class="flex-shrink-0">
+                                <a href="{{ url_for('customer.view_restaurant', restaurant_id=restaurant.id) }}" 
+                                   class="btn btn-sm btn-outline-primary">
+                                    Order
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="text-center py-3">
+                            <i class="fas fa-heart fa-2x text-muted mb-2"></i>
+                            <p class="text-muted mb-0">No favorites yet</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <!-- Quick Stats -->
+            <div class="card mt-3">
+                <div class="card-header">
+                    <h5 class="mb-0">Quick Stats</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row text-center">
+                        <div class="col-6">
+                            <h4 class="text-primary">{{ recent_orders|length }}</h4>
+                            <small class="text-muted">Recent Orders</small>
+                        </div>
+                        <div class="col-6">
+                            <h4 class="text-success">{{ favorite_restaurants|length }}</h4>
+                            <small class="text-muted">Favorite Restaurants</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
