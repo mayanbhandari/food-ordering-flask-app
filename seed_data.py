@@ -2,18 +2,19 @@
 Seed data for JustEat application
 """
 
-from app import create_app
 from models import db, User, Restaurant, MenuItem, Order, OrderItem, Review, Feedback
 from werkzeug.security import generate_password_hash
 from datetime import time
 
 
-def create_seed_data():
-    app = create_app()  # create the Flask app
-    with app.app_context():
-        # Clear existing tables and recreate (only for dev/testing)
-        db.drop_all()
-        db.create_all()
+def seed_data():
+    # DO NOT create app here
+    # DO NOT drop tables
+
+    # Prevent reseeding
+    if Restaurant.query.first():
+        return
+
 
         # Create admin
         admin = User(
@@ -600,8 +601,6 @@ def create_seed_data():
                 db.session.add(feedback)
 
         db.session.commit()
-        print("✅ Seed data created successfully with 6 restaurants, sample orders, reviews, and feedback!")
+        print(" Seed data created successfully with 6 restaurants, sample orders, reviews, and feedback!")
 
 
-if __name__ == "__main__":
-    create_seed_data()
