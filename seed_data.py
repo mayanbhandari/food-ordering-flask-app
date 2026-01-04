@@ -8,12 +8,13 @@ from datetime import time
 
 
 def seed_data():
-    # DO NOT create app here
-    # DO NOT drop tables
-
-    # Prevent reseeding
     if Restaurant.query.first():
-        return
+        return False
+
+    # insert data
+    db.session.commit()
+    return True
+
 
 
         # Create admin
