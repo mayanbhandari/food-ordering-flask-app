@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+
+{% block title %}Restaurant Profile - JustEat{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="display-5 fw-bold">Restaurant Profile</h1>
+            <p class="lead text-muted">Manage your restaurant information</p>
+        </div>
+    </div>
+    
+    <div class="row">
+        <!-- Main Form Section -->
+        <div class="col-lg-8">
+            <!-- enctype is needed for file upload -->
+            <form method="POST" enctype="multipart/form-data">
+                {{ form.csrf_token }}
+                
+                <!-- Restaurant Image -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0">Restaurant Image</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        {% if restaurant.image_url %}
+                            <img src="{{ url_for('static', filename=restaurant.image_url) }}"
+                                 alt="{{ restaurant.name }}"
+                                 class="img-fluid rounded mb-3"
+                                 style="max-height: 200px;">
+                        {% else %}
+                            <p class="text-muted">No image uploaded</p>
+                        {% endif %}
+                        {{ form.image(class="form-control mt-2") }}
+                    </div>
+                </div>
+
+                <!-- Restaurant Information -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0">Restaurant Information</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label class="form-label">Restaurant Name</label>
+                            {{ form.name(class="form-control", value=restaurant.name) }}
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label">Description</label>
+                            {{ form.description(class="form-control", rows="3", value=restaurant.description) }}
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Cuisine Type</label>
+                                {{ form.cuisine_type(class="form-select", value=restaurant.cuisine_type) }}
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Restaurant Phone</label>
+                                {{ form.phone(class="form-control", value=restaurant.phone) }}
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Address</label>
+                            {{ form.address(class="form-control", rows="2", value=restaurant.address) }}
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label">City</label>
+                                {{ form.city(class="form-control", value=restaurant.city) }}
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label">State</label>
+                                {{ form.state(class="form-control", value=restaurant.state) }}
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label">ZIP Code</label>
+                                {{ form.zip_code(class="form-control", value=restaurant.zip_code) }}
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Restaurant Email</label>
+                                {{ form.email(class="form-control", value=restaurant.email) }}
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label class="form-label">Opening Time</label>
+                                {{ form.opening_time(class="form-control", value=restaurant.opening_time.strftime('%H:%M') if restaurant.opening_time else '') }}
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label class="form-label">Closing Time</label>
+                                {{ form.closing_time(class="form-control", value=restaurant.closing_time.strftime('%H:%M') if restaurant.closing_time else '') }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save me-2"></i>Update Profile
+                    </button>
+                    <a href="{{ url_for('restaurant.dashboard') }}" class="btn btn-outline-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+        
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">Account Information</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label class="form-label text-muted">Username</label>
+                        <p class="mb-0">{{ current_user.username }}</p>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label text-muted">Role</label>
+                        <p class="mb-0">
+                            <span class="badge bg-primary">{{ current_user.role.title() }}</span>
+                        </p>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label text-muted">Member Since</label>
+                        <p class="mb-0">{{ current_user.created_at.strftime('%B %d, %Y') }}</p>
+                    </div>
+                    
+                    <hr>
+                    
+                    <div class="d-grid gap-2">
+                        <a href="{{ url_for('auth.reset_password') }}" class="btn btn-outline-warning">
+                            <i class="fas fa-key me-2"></i>Change Password
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Quick Actions</h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-grid gap-2">
+                        <a href="{{ url_for('restaurant.manage_menu_all', restaurant_id=restaurant.id) }}" class="btn btn-outline-primary">
+                            <i class="fas fa-utensils me-2"></i>Manage Menu
+                        </a>
+                        <a href="{{ url_for('restaurant.manage_orders', restaurant_id=restaurant.id) }}" class="btn btn-outline-success">
+                            <i class="fas fa-clipboard-list me-2"></i>Manage Orders
+                        </a>
+                        <a href="{{ url_for('restaurant.view_reviews', restaurant_id=restaurant.id) }}" class="btn btn-outline-info">
+                            <i class="fas fa-star me-2"></i>View Reviews
+                        </a>
+                        <a href="{{ url_for('restaurant.view_feedback', restaurant_id=restaurant.id) }}" class="btn btn-outline-warning">
+                            <i class="fas fa-comment me-2"></i>View Feedback
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

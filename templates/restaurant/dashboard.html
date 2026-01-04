@@ -1,0 +1,218 @@
+{% extends "base.html" %} {% block title %}Restaurant Dashboard - JustEat{%
+endblock %} {% block content %}
+<div class="container py-4">
+  <div class="row mb-4">
+    <div class="col-12">
+      <h1 class="display-5 fw-bold">Restaurant Dashboard</h1>
+      <p class="lead text-muted">
+        Welcome back, {{ current_user.first_name }}!
+      </p>
+      <h3 class="fw-bold mt-4">My Restaurants</h3>
+
+      <!-- Search Bar -->
+      <form
+        method="GET"
+        action="{{ url_for('restaurant.dashboard') }}"
+        class="mb-3"
+      >
+        <div class="input-group">
+          <input
+            type="text"
+            name="q"
+            class="form-control"
+            placeholder="Search restaurants..."
+            value="{{ request.args.get('q', '') }}"
+          />
+          <button class="btn btn-primary" type="submit">
+            <i class="fas fa-search"></i> Search
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  {% for data in dashboard_data %}
+  <div class="card mb-4 shadow-sm">
+    <div class="card-header d-flex align-items-center">
+      {% if data.restaurant.image_url %}
+      <img
+        src="{{ url_for('static', filename=data.restaurant.image_url) }}"
+        alt="{{ data.restaurant.name }}"
+        class="rounded me-3"
+        style="width: 60px; height: 60px; object-fit: cover; cursor: pointer"
+        data-bs-toggle="modal"
+        data-bs-target="#imageModal{{ data.restaurant.id }}"
+      />
+      {% else %}
+      <img
+        src="{{ url_for('static', filename='images/placeholder_restaurant.png') }}"
+        alt="No Image"
+        class="rounded me-3"
+        style="width: 60px; height: 60px; object-fit: cover; cursor: pointer"
+        data-bs-toggle="modal"
+        data-bs-target="#imageModal{{ data.restaurant.id }}"
+      />
+      {% endif %}
+      <h5 class="mb-0">{{ data.restaurant.name }}</h5>
+    </div>
+
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="card bg-primary text-white text-center">
+            <div class="card-body">
+              <i class="fas fa-clipboard-list fa-2x mb-2"></i>
+              <h4 class="mb-0">{{ data.today_orders|length }}</h4>
+              <small>Today's Orders</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card bg-success text-white text-center">
+            <div class="card-body">
+              <i class="fas fa-rupee-sign fa-2x mb-2"></i>
+              <h4 class="mb-0">₹{{ "%.2f"|format(data.total_revenue) }}</h4>
+              <small>Total Revenue</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card bg-warning text-white text-center">
+            <div class="card-body">
+              <i class="fas fa-utensils fa-2x mb-2"></i>
+              <h4 class="mb-0">{{ data.restaurant.menu_items.count() }}</h4>
+              <small>Menu Items</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="mt-4">
+        <h6 class="fw-bold">Quick Actions</h6>
+        <div class="d-flex flex-wrap gap-2">
+          <a
+            href="{{ url_for('restaurant.manage_orders', restaurant_id=data.restaurant.id) }}"
+            class="btn btn-outline-success"
+            >📦 Manage Orders</a
+          >
+          <a
+            href="{{ url_for('restaurant.view_reviews', restaurant_id=data.restaurant.id) }}"
+            class="btn btn-outline-warning"
+            >⭐ View Reviews</a
+          >
+          <a
+            href="{{ url_for('restaurant.view_feedback', restaurant_id=data.restaurant.id) }}"
+            class="btn btn-outline-info"
+            >💬 View Feedback</a
+          >
+          <a
+            href="{{ url_for('restaurant.profile', restaurant_id=data.restaurant.id) }}"
+            class="btn btn-outline-primary"
+            >✏️ Edit Info</a
+          >
+          <button
+            class="btn btn-outline-danger"
+            data-bs-toggle="modal"
+            data-bs-target="#deleteModal{{ data.restaurant.id }}"
+          >
+            🗑️ Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Image Modal -->
+  <div
+    class="modal fade"
+    id="imageModal{{ data.restaurant.id }}"
+    tabindex="-1"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body text-center">
+          {% if data.restaurant.image_url %}
+          <img
+            src="{{ url_for('static', filename=data.restaurant.image_url) }}"
+            alt="{{ data.restaurant.name }}"
+            class="img-fluid rounded"
+          />
+          {% else %}
+          <img
+            src="{{ url_for('static', filename='images/placeholder_restaurant.png') }}"
+            alt="No Image"
+            class="img-fluid rounded"
+          />
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete Confirmation Modal -->
+  <div
+    class="modal fade"
+    id="deleteModal{{ data.restaurant.id }}"
+    tabindex="-1"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirm Delete</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+          ></button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delete
+          <strong>{{ data.restaurant.name }}</strong>?<br />This action cannot
+          be undone.
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Cancel
+          </button>
+          <form
+            method="POST"
+            action="{{ url_for('restaurant.delete_restaurant', restaurant_id=data.restaurant.id) }}"
+          >
+            <button type="submit" class="btn btn-danger">Delete</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% else %} {% if request.args.get('q') %}
+  <div class="card shadow-sm">
+    <div class="card-body text-center">
+      <i class="fas fa-search fa-3x text-muted mb-3"></i>
+      <h5>No results found for "{{ request.args.get('q') }}"</h5>
+      <p class="text-muted">Try searching with a different keyword.</p>
+    </div>
+  </div>
+  {% else %}
+  <div class="card shadow-sm">
+    <div class="card-body text-center">
+      <i class="fas fa-store fa-3x text-muted mb-3"></i>
+      <h5>No restaurants registered</h5>
+      <p class="text-muted">
+        Click "Register New" to add your first restaurant.
+      </p>
+      <a href="{{ url_for('restaurant.register') }}" class="btn btn-primary"
+        >+ Register New</a
+      >
+    </div>
+  </div>
+  {% endif %} {% endfor %}
+</div>
+{% endblock %}

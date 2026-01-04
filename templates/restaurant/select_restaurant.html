@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Select Restaurant{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h3>Select a Restaurant to Manage Menu</h3>
+    <ul class="list-group mt-3">
+        {% for r in restaurants %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            {{ r.name }}
+            <a href="{{ url_for('restaurant.manage_menu_all', restaurant_id=r.id) }}" 
+               class="btn btn-primary btn-sm">Manage Menu</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

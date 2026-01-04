@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+
+{% block title %}Register Restaurant - JustEat{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Register Your Restaurant</h5>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted mb-4">
+                        Complete the form below to register your restaurant on JustEat platform.
+                    </p>
+                    
+                    <form method="POST">
+                        {{ form.hidden_tag() }}
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    {{ form.name.label(class="form-label") }}
+                                    {{ form.name(class="form-control" + (" is-invalid" if form.name.errors else "")) }}
+                                    {% if form.name.errors %}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.name.errors %}
+                                                {{ error }}
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    {{ form.cuisine_type.label(class="form-label") }}
+                                    {{ form.cuisine_type(class="form-select" + (" is-invalid" if form.cuisine_type.errors else "")) }}
+                                    {% if form.cuisine_type.errors %}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.cuisine_type.errors %}
+                                                {{ error }}
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            {{ form.description.label(class="form-label") }}
+                            {{ form.description(class="form-control" + (" is-invalid" if form.description.errors else ""), rows="3") }}
+                            {% if form.description.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.description.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="mb-3">
+                            {{ form.address.label(class="form-label") }}
+                            {{ form.address(class="form-control" + (" is-invalid" if form.address.errors else ""), rows="2") }}
+                            {% if form.address.errors %}
+                                <div class="invalid-feedback">
+                                    {% for error in form.address.errors %}
+                                        {{ error }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    {{ form.phone.label(class="form-label") }}
+                                    {{ form.phone(class="form-control" + (" is-invalid" if form.phone.errors else "")) }}
+                                    {% if form.phone.errors %}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.phone.errors %}
+                                                {{ error }}
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    {{ form.email.label(class="form-label") }}
+                                    {{ form.email(class="form-control" + (" is-invalid" if form.email.errors else "")) }}
+                                    {% if form.email.errors %}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.email.errors %}
+                                                {{ error }}
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    {{ form.opening_time.label(class="form-label") }}
+                                    {{ form.opening_time(class="form-control" + (" is-invalid" if form.opening_time.errors else "")) }}
+                                    {% if form.opening_time.errors %}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.opening_time.errors %}
+                                                {{ error }}
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    {{ form.closing_time.label(class="form-label") }}
+                                    {{ form.closing_time(class="form-control" + (" is-invalid" if form.closing_time.errors else "")) }}
+                                    {% if form.closing_time.errors %}
+                                        <div class="invalid-feedback">
+                                            {% for error in form.closing_time.errors %}
+                                                {{ error }}
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex gap-2">
+                            {{ form.submit(class="btn btn-primary") }}
+                            <a href="{{ url_for('restaurant.dashboard') }}" class="btn btn-outline-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

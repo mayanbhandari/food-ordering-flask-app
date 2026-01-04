@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+
+{% block title %}Manage Menu - {{ restaurant.name }}{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h1 class="display-5 fw-bold">Manage Menu</h1>
+                    <p class="lead text-muted">{{ restaurant.name }}</p>
+                </div>
+                <div>
+                    <a href="{{ url_for('restaurant.add_menu_item', restaurant_id=restaurant.id) }}" class="btn btn-primary">
+                        <i class="fas fa-plus me-2"></i>Add Menu Item
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    {% if menu_by_category %}
+        {% for category, items in menu_by_category.items() %}
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">{{ category }}</h5>
+                <span class="badge bg-secondary">{{ items|length }} item{{ 's' if items|length != 1 else '' }}</span>
+            </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th>Item</th>
+                                <th>Diet</th>
+                                <th>Description</th>
+                                <th>Price</th>
+                                <th>Prep Time</th>
+                                <th>Status</th>
+                                <th>Special</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in items %}
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="flex-shrink-0 me-3">
+                                            <div class="menu-item-image bg-light d-flex align-items-center justify-content-center" 
+                                                 style="width: 50px; height: 50px;">
+                                                <i class="fas fa-utensils text-muted"></i>
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <h6 class="mb-0">{{ item.name }}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    {% if item.diet_type == 'veg' %}
+                                        <span class="badge bg-success"><i class="fas fa-leaf me-1"></i>Veg</span>
+                                    {% else %}
+                                        <span class="badge bg-danger"><i class="fas fa-drumstick-bite me-1"></i>Non-Veg</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <small class="text-muted">{{ item.description[:50] }}{% if item.description|length > 50 %}...{% endif %}</small>
+                                </td>
+                                <td>
+                                    <strong class="text-primary">₹{{ "%.2f"|format(item.price) }}</strong>
+                                </td>
+                                <td>
+                                    <small>{{ item.preparation_time }} min</small>
+                                </td>
+                                <td>
+                                    {% if item.is_available %}
+                                        <span class="badge bg-success">Available</span>
+                                    {% else %}
+                                        <span class="badge bg-danger">Unavailable</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <div class="d-flex flex-column gap-1">
+                                        {% if item.is_special %}
+                                            <span class="badge badge-special">Today's Special</span>
+                                        {% endif %}
+                                        {% if item.is_deal_of_day %}
+                                            <span class="badge badge-deal">Deal of Day</span>
+                                        {% endif %}
+                                        {% if item.mostly_ordered %}
+                                            <span class="badge badge-popular">Mostly Ordered</span>
+                                        {% endif %}
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <a href="{{ url_for('restaurant.edit_menu_item', restaurant_id=restaurant.id, item_id=item.id) }}" 
+                                           class="btn btn-sm btn-outline-primary">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a href="{{ url_for('restaurant.delete_menu_item', restaurant_id=restaurant.id, item_id=item.id) }}" 
+                                           class="btn btn-sm btn-outline-danger"
+                                           onclick="return confirm('Are you sure you want to delete this menu item?')">
+                                            <i class="fas fa-trash"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <div class="text-center py-5">
+            <i class="fas fa-utensils fa-4x text-muted mb-4"></i>
+            <h3>No menu items yet</h3>
+            <p class="text-muted mb-4">Start by adding your first menu item to get started!</p>
+            <a href="{{ url_for('restaurant.add_menu_item', restaurant_id=restaurant.id) }}" class="btn btn-primary btn-lg">
+                <i class="fas fa-plus me-2"></i>Add Menu Item
+            </a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

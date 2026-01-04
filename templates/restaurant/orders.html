@@ -1,0 +1,195 @@
+{% extends "base.html" %}
+
+{% block title %}Manage Orders - JustEat{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="display-5 fw-bold">Manage Orders</h1>
+            <p class="lead text-muted">Track and manage customer orders</p>
+        </div>
+    </div>
+    
+    <!-- Filter -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <form method="GET" class="row g-3">
+                        <!-- keep restaurant id during filtering -->
+                        <input type="hidden" name="restaurant_id" value="{{ restaurant.id }}">
+                        <div class="col-md-4">
+                            <select class="form-select" name="status">
+                                <option value="">All Statuses</option>
+                                <option value="pending" {% if status_filter == 'pending' %}selected{% endif %}>Pending</option>
+                                <option value="confirmed" {% if status_filter == 'confirmed' %}selected{% endif %}>Confirmed</option>
+                                <option value="preparing" {% if status_filter == 'preparing' %}selected{% endif %}>Preparing</option>
+                                <option value="ready" {% if status_filter == 'ready' %}selected{% endif %}>Ready</option>
+                                <option value="delivered" {% if status_filter == 'delivered' %}selected{% endif %}>Delivered</option>
+                                <option value="cancelled" {% if status_filter == 'cancelled' %}selected{% endif %}>Cancelled</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="submit" class="btn btn-primary w-100">
+                                <i class="fas fa-filter me-1"></i>Filter
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Orders -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Orders</h5>
+                </div>
+                <div class="card-body p-0">
+                    {% if orders.items %}
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Order #</th>
+                                        <th>Customer</th>
+                                        <th>Items</th>
+                                        <th>Total</th>
+                                        <th>Status</th>
+                                        <th>Date</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for order in orders.items %}
+                                    <tr>
+                                        <td>
+                                            <strong>{{ order.order_number }}</strong>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-center">
+                                                <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-2" 
+                                                     style="width: 30px; height: 30px;">
+                                                    {{ order.customer.first_name[0] }}
+                                                </div>
+                                                <div>
+                                                    <div>{{ order.customer.first_name }} {{ order.customer.last_name }}</div>
+                                                    <small class="text-muted">{{ order.customer.phone }}</small>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-secondary">
+                                                {{ order.order_items.count() }} item{{ 's' if order.order_items.count() != 1 else '' }}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <strong class="text-primary">₹{{ "%.2f"|format(order.total_amount) }}</strong>
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-{{ 'success' if order.status == 'delivered' else 'warning' if order.status in ['pending', 'confirmed', 'preparing'] else 'danger' }}">
+                                                {{ order.status.title() }}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <small>{{ order.created_at | datetime_ist }}</small>
+                                        </td>
+                                        <td>
+                                            <div class="btn-group" role="group">
+                                                <a href="{{ url_for('restaurant.view_order', order_id=order.id) }}" 
+                                                   class="btn btn-sm btn-outline-primary">
+                                                    <i class="fas fa-eye"></i>
+                                                </a>
+                                                {% if order.status == 'pending' %}
+                                                    <button class="btn btn-sm btn-success update-order-status" 
+                                                            data-order-id="{{ order.id }}" data-status="confirmed">
+                                                        <i class="fas fa-check"></i>
+                                                    </button>
+                                                {% elif order.status == 'confirmed' %}
+                                                    <button class="btn btn-sm btn-warning update-order-status" 
+                                                            data-order-id="{{ order.id }}" data-status="preparing">
+                                                        <i class="fas fa-clock"></i>
+                                                    </button>
+                                                {% elif order.status == 'preparing' %}
+                                                    <button class="btn btn-sm btn-info update-order-status" 
+                                                            data-order-id="{{ order.id }}" data-status="ready">
+                                                        <i class="fas fa-check-circle"></i>
+                                                    </button>
+                                                {% elif order.status == 'ready' %}
+                                                    <button class="btn btn-sm btn-primary update-order-status" 
+                                                            data-order-id="{{ order.id }}" data-status="delivered">
+                                                        <i class="fas fa-truck"></i>
+                                                    </button>
+                                                {% endif %}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <div class="text-center py-5">
+                            <i class="fas fa-clipboard-list fa-4x text-muted mb-4"></i>
+                            <h3>No orders found</h3>
+                            <p class="text-muted">
+                                {% if status_filter %}
+                                    No orders with status "{{ status_filter.title() }}"
+                                {% else %}
+                                    No orders yet
+                                {% endif %}
+                            </p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Pagination -->
+    {% if orders.pages > 1 %}
+    <nav aria-label="Orders pagination" class="mt-4">
+        <ul class="pagination justify-content-center">
+            {% if orders.has_prev %}
+                <li class="page-item">
+                    <a class="page-link" href="{{ url_for('restaurant.manage_orders', page=orders.prev_num, status=status_filter, restaurant_id=restaurant.id) }}">
+                        Previous
+                    </a>
+                </li>
+            {% endif %}
+            
+            {% for page_num in orders.iter_pages() %}
+                {% if page_num %}
+                    {% if page_num != orders.page %}
+                        <li class="page-item">
+                            <a class="page-link" href="{{ url_for('restaurant.manage_orders', page=page_num, status=status_filter, restaurant_id=restaurant.id) }}">
+                                {{ page_num }}
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="page-item active">
+                            <span class="page-link">{{ page_num }}</span>
+                        </li>
+                    {% endif %}
+                {% else %}
+                    <li class="page-item disabled">
+                        <span class="page-link">...</span>
+                    </li>
+                {% endif %}
+            {% endfor %}
+            
+            {% if orders.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="{{ url_for('restaurant.manage_orders', page=orders.next_num, status=status_filter, restaurant_id=restaurant.id) }}">
+                        Next
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+</div>
+{% endblock %}

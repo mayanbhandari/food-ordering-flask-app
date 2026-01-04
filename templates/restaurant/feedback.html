@@ -1,0 +1,192 @@
+{% extends "base.html" %}
+
+{% block title %}Customer Feedback - {{ restaurant.name }}{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="display-5 fw-bold">Customer Feedback</h1>
+            <p class="lead text-muted">{{ restaurant.name }}</p>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">All Feedback</h5>
+                </div>
+                <div class="card-body">
+                    {% if feedbacks.items %}
+                        {% for feedback in feedbacks.items %}
+                        <div class="border-bottom pb-4 mb-4">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" 
+                                             style="width: 40px; height: 40px;">
+                                            {{ feedback.user.first_name[0] }}
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-0">{{ feedback.user.first_name }} {{ feedback.user.last_name }}</h6>
+                                            <small class="text-muted">{{ feedback.created_at.strftime('%B %d, %Y at %I:%M %p') }}</small>
+                                        </div>
+                                    </div>
+                                    
+                                    <h5 class="mb-2">{{ feedback.subject }}</h5>
+                                    <p class="mb-3">{{ feedback.message }}</p>
+                                    
+                                    {% if feedback.response %}
+                                        <div class="alert alert-info">
+                                            <h6 class="alert-heading">Your Response:</h6>
+                                            <p class="mb-0">{{ feedback.response }}</p>
+                                            <small class="text-muted">Updated: {{ feedback.updated_at.strftime('%B %d, %Y at %I:%M %p') }}</small>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                
+                                <div class="col-md-4">
+                                    <div class="d-flex flex-column align-items-end">
+                                        <span class="badge bg-{{ 'success' if feedback.status == 'resolved' else 'warning' if feedback.status == 'in_progress' else 'secondary' }} mb-2">
+                                            {{ feedback.status.title() }}
+                                        </span>
+                                        
+                                        {% if not feedback.response %}
+                                            <button class="btn btn-sm btn-outline-primary mb-2" 
+                                                    data-bs-toggle="modal" 
+                                                    data-bs-target="#responseModal{{ feedback.id }}">
+                                                <i class="fas fa-reply me-1"></i>Respond
+                                            </button>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Response Modal -->
+                        <div class="modal fade" id="responseModal{{ feedback.id }}" tabindex="-1">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Respond to Feedback</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="responseForm{{ feedback.id }}">
+                                            <div class="mb-3">
+                                                <label class="form-label">Response</label>
+                                                <textarea class="form-control" rows="4" 
+                                                          placeholder="Write your response to the customer..."></textarea>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label">Status</label>
+                                                <select class="form-select">
+                                                    <option value="in_progress">In Progress</option>
+                                                    <option value="resolved">Resolved</option>
+                                                </select>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                        <button type="button" class="btn btn-primary" 
+                                                onclick="submitResponse({{ feedback.id }})">Submit Response</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="text-center py-5">
+                            <i class="fas fa-comments fa-4x text-muted mb-4"></i>
+                            <h3>No feedback yet</h3>
+                            <p class="text-muted">Customer feedback will appear here once they start sending messages.</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Pagination -->
+    {% if feedbacks.pages > 1 %}
+    <nav aria-label="Feedback pagination" class="mt-4">
+        <ul class="pagination justify-content-center">
+            {% if feedbacks.has_prev %}
+                <li class="page-item">
+                    <a class="page-link" href="{{ url_for('restaurant.view_feedback', page=feedbacks.prev_num) }}">
+                        Previous
+                    </a>
+                </li>
+            {% endif %}
+            
+            {% for page_num in feedbacks.iter_pages() %}
+                {% if page_num %}
+                    {% if page_num != feedbacks.page %}
+                        <li class="page-item">
+                            <a class="page-link" href="{{ url_for('restaurant.view_feedback', page=page_num) }}">
+                                {{ page_num }}
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="page-item active">
+                            <span class="page-link">{{ page_num }}</span>
+                        </li>
+                    {% endif %}
+                {% else %}
+                    <li class="page-item disabled">
+                        <span class="page-link">...</span>
+                    </li>
+                {% endif %}
+            {% endfor %}
+            
+            {% if feedbacks.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="{{ url_for('restaurant.view_feedback', page=feedbacks.next_num) }}">
+                        Next
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+</div>
+
+<script>
+function submitResponse(feedbackId) {
+    const modal = document.getElementById('responseModal' + feedbackId);
+    const form = document.getElementById('responseForm' + feedbackId);
+    const response = form.querySelector('textarea').value;
+    const status = form.querySelector('select').value;
+    
+    if (!response.trim()) {
+        alert('Please enter a response');
+        return;
+    }
+    
+    fetch('/restaurant/feedback/' + feedbackId + '/respond', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            response: response,
+            status: status
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            showToast('success', data.message);
+            setTimeout(() => location.reload(), 1000);
+        } else {
+            showToast('error', data.message);
+        }
+    })
+    .catch(error => {
+        showToast('error', 'Error submitting response');
+    });
+}
+</script>
+{% endblock %}

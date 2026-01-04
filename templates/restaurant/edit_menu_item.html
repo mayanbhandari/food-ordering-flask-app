@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Menu Item - JustEat{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card shadow">
+        <div class="card-header bg-primary">
+          <h5 class="mb-0">Edit Menu Item</h5>
+        </div>
+        <div class="card-body">
+          <!-- ✅ Added enctype for file upload -->
+          <form method="POST" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+
+            <div class="row">
+              <div class="col-md-8">
+                <div class="mb-3">
+                  {{ form.name.label(class="form-label") }}
+                  {{ form.name(class="form-control" + (" is-invalid" if form.name.errors else "")) }}
+                  {% if form.name.errors %}
+                  <div class="invalid-feedback">
+                    {% for error in form.name.errors %} {{ error }} {% endfor %}
+                  </div>
+                  {% endif %}
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="mb-3">
+                  {{ form.price.label(class="form-label") }}
+                  {{ form.price(class="form-control" + (" is-invalid" if form.price.errors else "")) }}
+                  {% if form.price.errors %}
+                  <div class="invalid-feedback">
+                    {% for error in form.price.errors %} {{ error }} {% endfor %}
+                  </div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+
+            <!-- Description -->
+            <div class="mb-3">
+              {{ form.description.label(class="form-label") }}
+              {{ form.description(class="form-control" + (" is-invalid" if form.description.errors else ""), rows="3") }}
+              {% if form.description.errors %}
+              <div class="invalid-feedback">
+                {% for error in form.description.errors %} {{ error }} {% endfor %}
+              </div>
+              {% endif %}
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="mb-3">
+                  {{ form.category.label(class="form-label") }}
+                  {{ form.category(class="form-select" + (" is-invalid" if form.category.errors else "")) }}
+                  {% if form.category.errors %}
+                  <div class="invalid-feedback">
+                    {% for error in form.category.errors %} {{ error }} {% endfor %}
+                  </div>
+                  {% endif %}
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mb-3">
+                  {{ form.preparation_time.label(class="form-label") }}
+                  {{ form.preparation_time(class="form-control" + (" is-invalid" if form.preparation_time.errors else "")) }}
+                  {% if form.preparation_time.errors %}
+                  <div class="invalid-feedback">
+                    {% for error in form.preparation_time.errors %} {{ error }} {% endfor %}
+                  </div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+
+            <!-- Diet Type -->
+            <div class="mb-3">
+              {{ form.diet_type.label(class="form-label") }}
+              {{ form.diet_type(class="form-select" + (" is-invalid" if form.diet_type.errors else "")) }}
+              {% if form.diet_type.errors %}
+              <div class="invalid-feedback">
+                {% for error in form.diet_type.errors %} {{ error }} {% endfor %}
+              </div>
+              {% endif %}
+            </div>
+
+            <!-- Availability / Special / Deal -->
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-check mb-3">
+                  {{ form.is_available(class="form-check-input") }}
+                  {{ form.is_available.label(class="form-check-label") }}
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-check mb-3">
+                  {{ form.is_special(class="form-check-input") }}
+                  {{ form.is_special.label(class="form-check-label") }}
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-check mb-3">
+                  {{ form.is_deal_of_day(class="form-check-input") }}
+                  {{ form.is_deal_of_day.label(class="form-check-label") }}
+                </div>
+              </div>
+            </div>
+
+            <!-- ✅ Current Image Preview -->
+            {% if menu_item.image_url %}
+            <div class="mb-3">
+              <label class="form-label">Current Image</label><br>
+              <img src="{{ url_for('static', filename=menu_item.image_url) }}"
+                   alt="Menu Item Image"
+                   class="img-thumbnail"
+                   style="max-height: 200px;">
+            </div>
+            {% endif %}
+
+            <!-- ✅ Upload New Image -->
+            <div class="mb-3">
+              {{ form.image.label(class="form-label") }}
+              {{ form.image(class="form-control" + (" is-invalid" if form.image.errors else "")) }}
+              {% if form.image.errors %}
+              <div class="invalid-feedback">
+                {% for error in form.image.errors %} {{ error }} {% endfor %}
+              </div>
+              {% endif %}
+            </div>
+
+            <!-- Actions -->
+            <div class="d-flex gap-2">
+              {{ form.submit(class="btn btn-primary") }}
+              <a href="{{ url_for('restaurant.manage_menu_all', restaurant_id=restaurant.id) }}"
+                 class="btn btn-outline-secondary">Cancel</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
