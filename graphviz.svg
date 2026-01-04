@@ -1,0 +1,729 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="2237pt" height="2252pt" viewBox="0.00 0.00 2237.00 2252.00">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 2247.6)">
+<polygon fill="white" stroke="none" points="-4,4 -4,-2247.6 2232.65,-2247.6 2232.65,4 -4,4"/>
+<!-- alembic_version -->
+<g id="node1" class="node">
+<title>alembic_version</title>
+<polygon fill="none" stroke="black" points="22.39,-627.4 22.39,-656.6 501.41,-656.6 501.41,-627.4 22.39,-627.4"/>
+<text xml:space="preserve" text-anchor="start" x="199.2" y="-638.2" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="16.00">alembic_version</text>
+<polygon fill="none" stroke="black" points="22.39,-600.6 22.39,-627.4 501.41,-627.4 501.41,-600.6 22.39,-600.6"/>
+<text xml:space="preserve" text-anchor="start" x="27.39" y="-610.8" font-family="Helvetica,sans-Serif" text-decoration="underline" font-size="14.00">version_num</text>
+<text xml:space="preserve" text-anchor="start" x="107.54" y="-610.8" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="111.43" y="-610.8" font-family="Helvetica,sans-Serif" font-size="14.00"> [VARCHAR(32) COLLATE "utf8mb4_unicode_ci"]</text>
+<text xml:space="preserve" text-anchor="start" x="423.28" y="-610.8" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+</g>
+<!-- cart -->
+<g id="node2" class="node">
+<title>cart</title>
+<polygon fill="none" stroke="black" points="1878.12,-1980 1878.12,-2009.2 2126.96,-2009.2 2126.96,-1980 1878.12,-1980"/>
+<text xml:space="preserve" text-anchor="start" x="1987.86" y="-1990.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="16.00">cart</text>
+<polygon fill="none" stroke="black" points="1878.12,-1953.2 1878.12,-1980 2126.96,-1980 2126.96,-1953.2 1878.12,-1953.2"/>
+<text xml:space="preserve" text-anchor="start" x="1883.12" y="-1963.4" font-family="Helvetica,sans-Serif" text-decoration="underline" font-size="14.00">id</text>
+<text xml:space="preserve" text-anchor="start" x="1894.01" y="-1963.4" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1897.9" y="-1963.4" font-family="Helvetica,sans-Serif" font-size="14.00"> [INTEGER]</text>
+<text xml:space="preserve" text-anchor="start" x="1971.8" y="-1963.4" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="1878.12,-1926.4 1878.12,-1953.2 2126.96,-1953.2 2126.96,-1926.4 1878.12,-1926.4"/>
+<text xml:space="preserve" text-anchor="start" x="1883.12" y="-1936.6" font-family="Helvetica,sans-Serif" font-size="14.00">created_at</text>
+<text xml:space="preserve" text-anchor="start" x="1949.27" y="-1936.6" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1953.16" y="-1936.6" font-family="Helvetica,sans-Serif" font-size="14.00"> [DATETIME]</text>
+<polygon fill="none" stroke="black" points="1878.12,-1899.6 1878.12,-1926.4 2126.96,-1926.4 2126.96,-1899.6 1878.12,-1899.6"/>
+<text xml:space="preserve" text-anchor="start" x="1883.12" y="-1909.8" font-family="Helvetica,sans-Serif" font-size="14.00">menu_item_id</text>
+<text xml:space="preserve" text-anchor="start" x="1971.05" y="-1909.8" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1974.94" y="-1909.8" font-family="Helvetica,sans-Serif" font-size="14.00"> [INTEGER]</text>
+<text xml:space="preserve" text-anchor="start" x="2048.84" y="-1909.8" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="1878.12,-1872.8 1878.12,-1899.6 2126.96,-1899.6 2126.96,-1872.8 1878.12,-1872.8"/>
+<text xml:space="preserve" text-anchor="start" x="1883.12" y="-1883" font-family="Helvetica,sans-Serif" font-size="14.00">quantity</text>
+<text xml:space="preserve" text-anchor="start" x="1932.15" y="-1883" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1936.04" y="-1883" font-family="Helvetica,sans-Serif" font-size="14.00"> [INTEGER]</text>
+<text xml:space="preserve" text-anchor="start" x="2009.94" y="-1883" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="1878.12,-1846 1878.12,-1872.8 2126.96,-1872.8 2126.96,-1846 1878.12,-1846"/>
+<text xml:space="preserve" text-anchor="start" x="1883.12" y="-1856.2" font-family="Helvetica,sans-Serif" font-size="14.00">user_id</text>
+<text xml:space="preserve" text-anchor="start" x="1929.03" y="-1856.2" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1932.92" y="-1856.2" font-family="Helvetica,sans-Serif" font-size="14.00"> [INTEGER]</text>
+<text xml:space="preserve" text-anchor="start" x="2006.82" y="-1856.2" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+</g>
+<!-- users -->
+<g id="node3" class="node">
+<title>users</title>
+<polygon fill="none" stroke="black" points="8,-1031.2 8,-1060.4 515.8,-1060.4 515.8,-1031.2 8,-1031.2"/>
+<text xml:space="preserve" text-anchor="start" x="240.55" y="-1042" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="16.00">users</text>
+<polygon fill="none" stroke="black" points="8,-1004.4 8,-1031.2 515.8,-1031.2 515.8,-1004.4 8,-1004.4"/>
+<text xml:space="preserve" text-anchor="start" x="13" y="-1014.6" font-family="Helvetica,sans-Serif" text-decoration="underline" font-size="14.00">id</text>
+<text xml:space="preserve" text-anchor="start" x="23.9" y="-1014.6" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="27.79" y="-1014.6" font-family="Helvetica,sans-Serif" font-size="14.00"> [INTEGER]</text>
+<text xml:space="preserve" text-anchor="start" x="101.68" y="-1014.6" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="8,-977.6 8,-1004.4 515.8,-1004.4 515.8,-977.6 8,-977.6"/>
+<text xml:space="preserve" text-anchor="start" x="13" y="-987.8" font-family="Helvetica,sans-Serif" font-size="14.00">address</text>
+<text xml:space="preserve" text-anchor="start" x="62.81" y="-987.8" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="66.7" y="-987.8" font-family="Helvetica,sans-Serif" font-size="14.00"> [TEXT COLLATE "utf8mb4_unicode_ci"]</text>
+<polygon fill="none" stroke="black" points="8,-950.8 8,-977.6 515.8,-977.6 515.8,-950.8 8,-950.8"/>
+<text xml:space="preserve" text-anchor="start" x="13" y="-961" font-family="Helvetica,sans-Serif" font-size="14.00">created_at</text>
+<text xml:space="preserve" text-anchor="start" x="79.16" y="-961" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="83.05" y="-961" font-family="Helvetica,sans-Serif" font-size="14.00"> [DATETIME]</text>
+<polygon fill="none" stroke="black" points="8,-924 8,-950.8 515.8,-950.8 515.8,-924 8,-924"/>
+<text xml:space="preserve" text-anchor="start" x="13" y="-934.2" font-family="Helvetica,sans-Serif" font-size="14.00">email</text>
+<text xml:space="preserve" text-anchor="start" x="46.46" y="-934.2" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="50.34" y="-934.2" font-family="Helvetica,sans-Serif" font-size="14.00"> [VARCHAR(120) COLLATE "utf8mb4_unicode_ci"]</text>
+<text xml:space="preserve" text-anchor="start" x="369.98" y="-934.2" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="8,-897.2 8,-924 515.8,-924 515.8,-897.2 8,-897.2"/>
+<text xml:space="preserve" text-anchor="start" x="13" y="-907.4" font-family="Helvetica,sans-Serif" font-size="14.00">first_name</text>
+<text xml:space="preserve" text-anchor="start" x="78.36" y="-907.4" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="82.25" y="-907.4" font-family="Helvetica,sans-Serif" font-size="14.00"> [VARCHAR(50) COLLATE "utf8mb4_unicode_ci"]</text>
+<text xml:space="preserve" text-anchor="start" x="394.1" y="-907.4" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="8,-870.4 8,-897.2 515.8,-897.2 515.8,-870.4 8,-870.4"/>
+<text xml:space="preserve" text-anchor="start" x="13" y="-880.6" font-family="Helvetica,sans-Serif" font-size="14.00">is_active</text>
+<text xml:space="preserve" text-anchor="start" x="67.47" y="-880.6" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="71.36" y="-880.6" font-family="Helvetica,sans-Serif" font-size="14.00"> [TINYINT]</text>
+<polygon fill="none" stroke="black" points="8,-843.6 8,-870.4 515.8,-870.4 515.8,-843.6 8,-843.6"/>
+<text xml:space="preserve" text-anchor="start" x="13" y="-853.8" font-family="Helvetica,sans-Serif" font-size="14.00">last_name</text>
+<text xml:space="preserve" text-anchor="start" x="77.59" y="-853.8" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="81.48" y="-853.8" font-family="Helvetica,sans-Serif" font-size="14.00"> [VARCHAR(50) COLLATE "utf8mb4_unicode_ci"]</text>
+<text xml:space="preserve" text-anchor="start" x="393.33" y="-853.8" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="8,-816.8 8,-843.6 515.8,-843.6 515.8,-816.8 8,-816.8"/>
+<text xml:space="preserve" text-anchor="start" x="13" y="-827" font-family="Helvetica,sans-Serif" font-size="14.00">password_hash</text>
+<text xml:space="preserve" text-anchor="start" x="111.06" y="-827" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="114.95" y="-827" font-family="Helvetica,sans-Serif" font-size="14.00"> [VARCHAR(255) COLLATE "utf8mb4_unicode_ci"]</text>
+<text xml:space="preserve" text-anchor="start" x="434.59" y="-827" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="8,-790 8,-816.8 515.8,-816.8 515.8,-790 8,-790"/>
+<text xml:space="preserve" text-anchor="start" x="13" y="-800.2" font-family="Helvetica,sans-Serif" font-size="14.00">phone</text>
+<text xml:space="preserve" text-anchor="start" x="51.93" y="-800.2" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="55.82" y="-800.2" font-family="Helvetica,sans-Serif" font-size="14.00"> [VARCHAR(20) COLLATE "utf8mb4_unicode_ci"]</text>
+<polygon fill="none" stroke="black" points="8,-763.2 8,-790 515.8,-790 515.8,-763.2 8,-763.2"/>
+<text xml:space="preserve" text-anchor="start" x="13" y="-773.4" font-family="Helvetica,sans-Serif" font-size="14.00">profile_image</text>
+<text xml:space="preserve" text-anchor="start" x="97.05" y="-773.4" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="100.94" y="-773.4" font-family="Helvetica,sans-Serif" font-size="14.00"> [VARCHAR(255) COLLATE "utf8mb4_unicode_ci"]</text>
+<polygon fill="none" stroke="black" points="8,-736.4 8,-763.2 515.8,-763.2 515.8,-736.4 8,-736.4"/>
+<text xml:space="preserve" text-anchor="start" x="13" y="-746.6" font-family="Helvetica,sans-Serif" font-size="14.00">role</text>
+<text xml:space="preserve" text-anchor="start" x="36.34" y="-746.6" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="40.23" y="-746.6" font-family="Helvetica,sans-Serif" font-size="14.00"> [ENUM]</text>
+<text xml:space="preserve" text-anchor="start" x="93.12" y="-746.6" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="8,-709.6 8,-736.4 515.8,-736.4 515.8,-709.6 8,-709.6"/>
+<text xml:space="preserve" text-anchor="start" x="13" y="-719.8" font-family="Helvetica,sans-Serif" font-size="14.00">security_answer</text>
+<text xml:space="preserve" text-anchor="start" x="114.15" y="-719.8" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="118.04" y="-719.8" font-family="Helvetica,sans-Serif" font-size="14.00"> [VARCHAR(120) COLLATE "utf8mb4_unicode_ci"]</text>
+<text xml:space="preserve" text-anchor="start" x="437.68" y="-719.8" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="8,-682.8 8,-709.6 515.8,-709.6 515.8,-682.8 8,-682.8"/>
+<text xml:space="preserve" text-anchor="start" x="13" y="-693" font-family="Helvetica,sans-Serif" font-size="14.00">username</text>
+<text xml:space="preserve" text-anchor="start" x="75.25" y="-693" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="79.14" y="-693" font-family="Helvetica,sans-Serif" font-size="14.00"> [VARCHAR(80) COLLATE "utf8mb4_unicode_ci"]</text>
+<text xml:space="preserve" text-anchor="start" x="390.99" y="-693" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+</g>
+<!-- users&#45;&#45;cart -->
+<g id="edge2" class="edge">
+<title>users:id--cart:user_id</title>
+<path fill="none" stroke="#7f7f7f" stroke-dasharray="5,2" d="M516.8,-1017.8C556.87,-1017.8 581.08,-1697.74 596.8,-1734.6 668.78,-1903.36 677.75,-2051.6 861.22,-2051.6 861.22,-2051.6 861.22,-2051.6 1453.03,-2051.6 1564.64,-2051.6 1601.98,-2079.11 1703.43,-2032.6 1802.53,-1987.17 1768.1,-1859.4 1877.12,-1859.4"/>
+<text xml:space="preserve" text-anchor="start" x="1853.01" y="-1846.8" font-family="Times,serif" font-size="14.00">0..N</text>
+<text xml:space="preserve" text-anchor="start" x="516.8" y="-1009.4" font-family="Times,serif" font-size="14.00">1</text>
+</g>
+<!-- restaurants -->
+<g id="node5" class="node">
+<title>restaurants</title>
+<polygon fill="none" stroke="black" points="623.87,-1478.4 623.87,-1507.6 1100.56,-1507.6 1100.56,-1478.4 623.87,-1478.4"/>
+<text xml:space="preserve" text-anchor="start" x="818.64" y="-1489.2" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="16.00">restaurants</text>
+<polygon fill="none" stroke="black" points="623.87,-1451.6 623.87,-1478.4 1100.56,-1478.4 1100.56,-1451.6 623.87,-1451.6"/>
+<text xml:space="preserve" text-anchor="start" x="628.87" y="-1461.8" font-family="Helvetica,sans-Serif" text-decoration="underline" font-size="14.00">id</text>
+<text xml:space="preserve" text-anchor="start" x="639.77" y="-1461.8" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="643.66" y="-1461.8" font-family="Helvetica,sans-Serif" font-size="14.00"> [INTEGER]</text>
+<text xml:space="preserve" text-anchor="start" x="717.55" y="-1461.8" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="623.87,-1424.8 623.87,-1451.6 1100.56,-1451.6 1100.56,-1424.8 623.87,-1424.8"/>
+<text xml:space="preserve" text-anchor="start" x="628.87" y="-1435" font-family="Helvetica,sans-Serif" font-size="14.00">address</text>
+<text xml:space="preserve" text-anchor="start" x="678.68" y="-1435" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="682.57" y="-1435" font-family="Helvetica,sans-Serif" font-size="14.00"> [TEXT COLLATE "utf8mb4_unicode_ci"]</text>
+<text xml:space="preserve" text-anchor="start" x="936.84" y="-1435" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="623.87,-1398 623.87,-1424.8 1100.56,-1424.8 1100.56,-1398 623.87,-1398"/>
+<text xml:space="preserve" text-anchor="start" x="628.87" y="-1408.2" font-family="Helvetica,sans-Serif" font-size="14.00">city</text>
+<text xml:space="preserve" text-anchor="start" x="649.87" y="-1408.2" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="653.76" y="-1408.2" font-family="Helvetica,sans-Serif" font-size="14.00"> [VARCHAR(100) COLLATE "utf8mb4_unicode_ci"]</text>
+<text xml:space="preserve" text-anchor="start" x="973.4" y="-1408.2" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="623.87,-1371.2 623.87,-1398 1100.56,-1398 1100.56,-1371.2 623.87,-1371.2"/>
+<text xml:space="preserve" text-anchor="start" x="628.87" y="-1381.4" font-family="Helvetica,sans-Serif" font-size="14.00">closing_time</text>
+<text xml:space="preserve" text-anchor="start" x="706.69" y="-1381.4" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="710.58" y="-1381.4" font-family="Helvetica,sans-Serif" font-size="14.00"> [TIME]</text>
+<polygon fill="none" stroke="black" points="623.87,-1344.4 623.87,-1371.2 1100.56,-1371.2 1100.56,-1344.4 623.87,-1344.4"/>
+<text xml:space="preserve" text-anchor="start" x="628.87" y="-1354.6" font-family="Helvetica,sans-Serif" font-size="14.00">created_at</text>
+<text xml:space="preserve" text-anchor="start" x="695.03" y="-1354.6" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="698.92" y="-1354.6" font-family="Helvetica,sans-Serif" font-size="14.00"> [DATETIME]</text>
+<polygon fill="none" stroke="black" points="623.87,-1317.6 623.87,-1344.4 1100.56,-1344.4 1100.56,-1317.6 623.87,-1317.6"/>
+<text xml:space="preserve" text-anchor="start" x="628.87" y="-1327.8" font-family="Helvetica,sans-Serif" font-size="14.00">cuisine_type</text>
+<text xml:space="preserve" text-anchor="start" x="706.7" y="-1327.8" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="710.59" y="-1327.8" font-family="Helvetica,sans-Serif" font-size="14.00"> [VARCHAR(50) COLLATE "utf8mb4_unicode_ci"]</text>
+<text xml:space="preserve" text-anchor="start" x="1022.44" y="-1327.8" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="623.87,-1290.8 623.87,-1317.6 1100.56,-1317.6 1100.56,-1290.8 623.87,-1290.8"/>
+<text xml:space="preserve" text-anchor="start" x="628.87" y="-1301" font-family="Helvetica,sans-Serif" font-size="14.00">description</text>
+<text xml:space="preserve" text-anchor="start" x="696.58" y="-1301" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="700.46" y="-1301" font-family="Helvetica,sans-Serif" font-size="14.00"> [TEXT COLLATE "utf8mb4_unicode_ci"]</text>
+<polygon fill="none" stroke="black" points="623.87,-1264 623.87,-1290.8 1100.56,-1290.8 1100.56,-1264 623.87,-1264"/>
+<text xml:space="preserve" text-anchor="start" x="628.87" y="-1274.2" font-family="Helvetica,sans-Serif" font-size="14.00">email</text>
+<text xml:space="preserve" text-anchor="start" x="662.33" y="-1274.2" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="666.22" y="-1274.2" font-family="Helvetica,sans-Serif" font-size="14.00"> [VARCHAR(120) COLLATE "utf8mb4_unicode_ci"]</text>
+<polygon fill="none" stroke="black" points="623.87,-1237.2 623.87,-1264 1100.56,-1264 1100.56,-1237.2 623.87,-1237.2"/>
+<text xml:space="preserve" text-anchor="start" x="628.87" y="-1247.4" font-family="Helvetica,sans-Serif" font-size="14.00">image_url</text>
+<text xml:space="preserve" text-anchor="start" x="690.35" y="-1247.4" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="694.24" y="-1247.4" font-family="Helvetica,sans-Serif" font-size="14.00"> [VARCHAR(255) COLLATE "utf8mb4_unicode_ci"]</text>
+<polygon fill="none" stroke="black" points="623.87,-1210.4 623.87,-1237.2 1100.56,-1237.2 1100.56,-1210.4 623.87,-1210.4"/>
+<text xml:space="preserve" text-anchor="start" x="628.87" y="-1220.6" font-family="Helvetica,sans-Serif" font-size="14.00">is_active</text>
+<text xml:space="preserve" text-anchor="start" x="683.34" y="-1220.6" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="687.23" y="-1220.6" font-family="Helvetica,sans-Serif" font-size="14.00"> [TINYINT]</text>
+<polygon fill="none" stroke="black" points="623.87,-1183.6 623.87,-1210.4 1100.56,-1210.4 1100.56,-1183.6 623.87,-1183.6"/>
+<text xml:space="preserve" text-anchor="start" x="628.87" y="-1193.8" font-family="Helvetica,sans-Serif" font-size="14.00">name</text>
+<text xml:space="preserve" text-anchor="start" x="663.89" y="-1193.8" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="667.78" y="-1193.8" font-family="Helvetica,sans-Serif" font-size="14.00"> [VARCHAR(100) COLLATE "utf8mb4_unicode_ci"]</text>
+<text xml:space="preserve" text-anchor="start" x="987.42" y="-1193.8" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="623.87,-1156.8 623.87,-1183.6 1100.56,-1183.6 1100.56,-1156.8 623.87,-1156.8"/>
+<text xml:space="preserve" text-anchor="start" x="628.87" y="-1167" font-family="Helvetica,sans-Serif" font-size="14.00">opening_time</text>
+<text xml:space="preserve" text-anchor="start" x="712.93" y="-1167" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="716.82" y="-1167" font-family="Helvetica,sans-Serif" font-size="14.00"> [TIME]</text>
+<polygon fill="none" stroke="black" points="623.87,-1130 623.87,-1156.8 1100.56,-1156.8 1100.56,-1130 623.87,-1130"/>
+<text xml:space="preserve" text-anchor="start" x="628.87" y="-1140.2" font-family="Helvetica,sans-Serif" font-size="14.00">owner_id</text>
+<text xml:space="preserve" text-anchor="start" x="685.69" y="-1140.2" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="689.58" y="-1140.2" font-family="Helvetica,sans-Serif" font-size="14.00"> [INTEGER]</text>
+<text xml:space="preserve" text-anchor="start" x="763.47" y="-1140.2" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="623.87,-1103.2 623.87,-1130 1100.56,-1130 1100.56,-1103.2 623.87,-1103.2"/>
+<text xml:space="preserve" text-anchor="start" x="628.87" y="-1113.4" font-family="Helvetica,sans-Serif" font-size="14.00">phone</text>
+<text xml:space="preserve" text-anchor="start" x="667.8" y="-1113.4" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="671.69" y="-1113.4" font-family="Helvetica,sans-Serif" font-size="14.00"> [VARCHAR(20) COLLATE "utf8mb4_unicode_ci"]</text>
+<polygon fill="none" stroke="black" points="623.87,-1076.4 623.87,-1103.2 1100.56,-1103.2 1100.56,-1076.4 623.87,-1076.4"/>
+<text xml:space="preserve" text-anchor="start" x="628.87" y="-1086.6" font-family="Helvetica,sans-Serif" font-size="14.00">state</text>
+<text xml:space="preserve" text-anchor="start" x="659.22" y="-1086.6" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="663.11" y="-1086.6" font-family="Helvetica,sans-Serif" font-size="14.00"> [VARCHAR(50) COLLATE "utf8mb4_unicode_ci"]</text>
+<text xml:space="preserve" text-anchor="start" x="974.96" y="-1086.6" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="623.87,-1049.6 623.87,-1076.4 1100.56,-1076.4 1100.56,-1049.6 623.87,-1049.6"/>
+<text xml:space="preserve" text-anchor="start" x="628.87" y="-1059.8" font-family="Helvetica,sans-Serif" font-size="14.00">zip_code</text>
+<text xml:space="preserve" text-anchor="start" x="684.91" y="-1059.8" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="688.8" y="-1059.8" font-family="Helvetica,sans-Serif" font-size="14.00"> [VARCHAR(10) COLLATE "utf8mb4_unicode_ci"]</text>
+<text xml:space="preserve" text-anchor="start" x="1000.65" y="-1059.8" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+</g>
+<!-- users&#45;&#45;restaurants -->
+<g id="edge4" class="edge">
+<title>users:id--restaurants:owner_id</title>
+<path fill="none" stroke="#7f7f7f" stroke-dasharray="5,2" d="M516.8,-1017.8C589.87,-1017.8 549.81,-1143.4 622.87,-1143.4"/>
+<text xml:space="preserve" text-anchor="start" x="598.76" y="-1130.8" font-family="Times,serif" font-size="14.00">0..N</text>
+<text xml:space="preserve" text-anchor="start" x="509.8" y="-1005.2" font-family="Times,serif" font-size="14.00">1</text>
+</g>
+<!-- feedbacks -->
+<g id="node6" class="node">
+<title>feedbacks</title>
+<polygon fill="none" stroke="black" points="1226.53,-1252.6 1226.53,-1281.8 1677.54,-1281.8 1677.54,-1252.6 1226.53,-1252.6"/>
+<text xml:space="preserve" text-anchor="start" x="1412.9" y="-1263.4" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="16.00">feedbacks</text>
+<polygon fill="none" stroke="black" points="1226.53,-1225.8 1226.53,-1252.6 1677.54,-1252.6 1677.54,-1225.8 1226.53,-1225.8"/>
+<text xml:space="preserve" text-anchor="start" x="1231.53" y="-1236" font-family="Helvetica,sans-Serif" text-decoration="underline" font-size="14.00">id</text>
+<text xml:space="preserve" text-anchor="start" x="1242.43" y="-1236" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1246.32" y="-1236" font-family="Helvetica,sans-Serif" font-size="14.00"> [INTEGER]</text>
+<text xml:space="preserve" text-anchor="start" x="1320.21" y="-1236" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="1226.53,-1199 1226.53,-1225.8 1677.54,-1225.8 1677.54,-1199 1226.53,-1199"/>
+<text xml:space="preserve" text-anchor="start" x="1231.53" y="-1209.2" font-family="Helvetica,sans-Serif" font-size="14.00">created_at</text>
+<text xml:space="preserve" text-anchor="start" x="1297.69" y="-1209.2" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1301.58" y="-1209.2" font-family="Helvetica,sans-Serif" font-size="14.00"> [DATETIME]</text>
+<polygon fill="none" stroke="black" points="1226.53,-1172.2 1226.53,-1199 1677.54,-1199 1677.54,-1172.2 1226.53,-1172.2"/>
+<text xml:space="preserve" text-anchor="start" x="1231.53" y="-1182.4" font-family="Helvetica,sans-Serif" font-size="14.00">message</text>
+<text xml:space="preserve" text-anchor="start" x="1288.34" y="-1182.4" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1292.23" y="-1182.4" font-family="Helvetica,sans-Serif" font-size="14.00"> [TEXT COLLATE "utf8mb4_unicode_ci"]</text>
+<text xml:space="preserve" text-anchor="start" x="1546.5" y="-1182.4" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="1226.53,-1145.4 1226.53,-1172.2 1677.54,-1172.2 1677.54,-1145.4 1226.53,-1145.4"/>
+<text xml:space="preserve" text-anchor="start" x="1231.53" y="-1155.6" font-family="Helvetica,sans-Serif" font-size="14.00">response</text>
+<text xml:space="preserve" text-anchor="start" x="1289.12" y="-1155.6" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1293.01" y="-1155.6" font-family="Helvetica,sans-Serif" font-size="14.00"> [TEXT COLLATE "utf8mb4_unicode_ci"]</text>
+<polygon fill="none" stroke="black" points="1226.53,-1118.6 1226.53,-1145.4 1677.54,-1145.4 1677.54,-1118.6 1226.53,-1118.6"/>
+<text xml:space="preserve" text-anchor="start" x="1231.53" y="-1128.8" font-family="Helvetica,sans-Serif" font-size="14.00">restaurant_id</text>
+<text xml:space="preserve" text-anchor="start" x="1313.25" y="-1128.8" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1317.14" y="-1128.8" font-family="Helvetica,sans-Serif" font-size="14.00"> [INTEGER]</text>
+<polygon fill="none" stroke="black" points="1226.53,-1091.8 1226.53,-1118.6 1677.54,-1118.6 1677.54,-1091.8 1226.53,-1091.8"/>
+<text xml:space="preserve" text-anchor="start" x="1231.53" y="-1102" font-family="Helvetica,sans-Serif" font-size="14.00">status</text>
+<text xml:space="preserve" text-anchor="start" x="1268.88" y="-1102" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1272.77" y="-1102" font-family="Helvetica,sans-Serif" font-size="14.00"> [ENUM]</text>
+<polygon fill="none" stroke="black" points="1226.53,-1065 1226.53,-1091.8 1677.54,-1091.8 1677.54,-1065 1226.53,-1065"/>
+<text xml:space="preserve" text-anchor="start" x="1231.53" y="-1075.2" font-family="Helvetica,sans-Serif" font-size="14.00">subject</text>
+<text xml:space="preserve" text-anchor="start" x="1275.89" y="-1075.2" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1279.78" y="-1075.2" font-family="Helvetica,sans-Serif" font-size="14.00"> [VARCHAR(200) COLLATE "utf8mb4_unicode_ci"]</text>
+<text xml:space="preserve" text-anchor="start" x="1599.41" y="-1075.2" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="1226.53,-1038.2 1226.53,-1065 1677.54,-1065 1677.54,-1038.2 1226.53,-1038.2"/>
+<text xml:space="preserve" text-anchor="start" x="1231.53" y="-1048.4" font-family="Helvetica,sans-Serif" font-size="14.00">updated_at</text>
+<text xml:space="preserve" text-anchor="start" x="1301.6" y="-1048.4" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1305.49" y="-1048.4" font-family="Helvetica,sans-Serif" font-size="14.00"> [DATETIME]</text>
+<polygon fill="none" stroke="black" points="1226.53,-1011.4 1226.53,-1038.2 1677.54,-1038.2 1677.54,-1011.4 1226.53,-1011.4"/>
+<text xml:space="preserve" text-anchor="start" x="1231.53" y="-1021.6" font-family="Helvetica,sans-Serif" font-size="14.00">user_id</text>
+<text xml:space="preserve" text-anchor="start" x="1277.45" y="-1021.6" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1281.34" y="-1021.6" font-family="Helvetica,sans-Serif" font-size="14.00"> [INTEGER]</text>
+<text xml:space="preserve" text-anchor="start" x="1355.23" y="-1021.6" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+</g>
+<!-- users&#45;&#45;feedbacks -->
+<g id="edge5" class="edge">
+<title>users:id--feedbacks:user_id</title>
+<path fill="none" stroke="#7f7f7f" stroke-dasharray="5,2" d="M516.8,-1017.8C831.81,-1017.8 910.52,-1024.8 1225.53,-1024.8"/>
+<text xml:space="preserve" text-anchor="start" x="1201.42" y="-1012.2" font-family="Times,serif" font-size="14.00">0..N</text>
+<text xml:space="preserve" text-anchor="start" x="509.8" y="-1022" font-family="Times,serif" font-size="14.00">1</text>
+</g>
+<!-- in_app_notifications -->
+<g id="node7" class="node">
+<title>in_app_notifications</title>
+<polygon fill="none" stroke="black" points="612.2,-918 612.2,-947.2 1112.24,-947.2 1112.24,-918 612.2,-918"/>
+<text xml:space="preserve" text-anchor="start" x="784.43" y="-928.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="16.00">in_app_notifications</text>
+<polygon fill="none" stroke="black" points="612.2,-891.2 612.2,-918 1112.24,-918 1112.24,-891.2 612.2,-891.2"/>
+<text xml:space="preserve" text-anchor="start" x="617.2" y="-901.4" font-family="Helvetica,sans-Serif" text-decoration="underline" font-size="14.00">id</text>
+<text xml:space="preserve" text-anchor="start" x="628.09" y="-901.4" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="631.98" y="-901.4" font-family="Helvetica,sans-Serif" font-size="14.00"> [INTEGER]</text>
+<text xml:space="preserve" text-anchor="start" x="705.88" y="-901.4" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="612.2,-864.4 612.2,-891.2 1112.24,-891.2 1112.24,-864.4 612.2,-864.4"/>
+<text xml:space="preserve" text-anchor="start" x="617.2" y="-874.6" font-family="Helvetica,sans-Serif" font-size="14.00">created_at</text>
+<text xml:space="preserve" text-anchor="start" x="683.35" y="-874.6" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="687.24" y="-874.6" font-family="Helvetica,sans-Serif" font-size="14.00"> [DATETIME]</text>
+<polygon fill="none" stroke="black" points="612.2,-837.6 612.2,-864.4 1112.24,-864.4 1112.24,-837.6 612.2,-837.6"/>
+<text xml:space="preserve" text-anchor="start" x="617.2" y="-847.8" font-family="Helvetica,sans-Serif" font-size="14.00">data</text>
+<text xml:space="preserve" text-anchor="start" x="644.44" y="-847.8" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="648.33" y="-847.8" font-family="Helvetica,sans-Serif" font-size="14.00"> [JSON]</text>
+<polygon fill="none" stroke="black" points="612.2,-810.8 612.2,-837.6 1112.24,-837.6 1112.24,-810.8 612.2,-810.8"/>
+<text xml:space="preserve" text-anchor="start" x="617.2" y="-821" font-family="Helvetica,sans-Serif" font-size="14.00">expires_at</text>
+<text xml:space="preserve" text-anchor="start" x="681.79" y="-821" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="685.68" y="-821" font-family="Helvetica,sans-Serif" font-size="14.00"> [DATETIME]</text>
+<polygon fill="none" stroke="black" points="612.2,-784 612.2,-810.8 1112.24,-810.8 1112.24,-784 612.2,-784"/>
+<text xml:space="preserve" text-anchor="start" x="617.2" y="-794.2" font-family="Helvetica,sans-Serif" font-size="14.00">message</text>
+<text xml:space="preserve" text-anchor="start" x="674" y="-794.2" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="677.89" y="-794.2" font-family="Helvetica,sans-Serif" font-size="14.00"> [TEXT COLLATE "utf8mb4_unicode_ci"]</text>
+<text xml:space="preserve" text-anchor="start" x="932.17" y="-794.2" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="612.2,-757.2 612.2,-784 1112.24,-784 1112.24,-757.2 612.2,-757.2"/>
+<text xml:space="preserve" text-anchor="start" x="617.2" y="-767.4" font-family="Helvetica,sans-Serif" font-size="14.00">notification_type</text>
+<text xml:space="preserve" text-anchor="start" x="718.38" y="-767.4" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="722.26" y="-767.4" font-family="Helvetica,sans-Serif" font-size="14.00"> [VARCHAR(50) COLLATE "utf8mb4_unicode_ci"]</text>
+<text xml:space="preserve" text-anchor="start" x="1034.11" y="-767.4" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="612.2,-730.4 612.2,-757.2 1112.24,-757.2 1112.24,-730.4 612.2,-730.4"/>
+<text xml:space="preserve" text-anchor="start" x="617.2" y="-740.6" font-family="Helvetica,sans-Serif" font-size="14.00">read</text>
+<text xml:space="preserve" text-anchor="start" x="645.22" y="-740.6" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="649.11" y="-740.6" font-family="Helvetica,sans-Serif" font-size="14.00"> [TINYINT]</text>
+<polygon fill="none" stroke="black" points="612.2,-703.6 612.2,-730.4 1112.24,-730.4 1112.24,-703.6 612.2,-703.6"/>
+<text xml:space="preserve" text-anchor="start" x="617.2" y="-713.8" font-family="Helvetica,sans-Serif" font-size="14.00">read_at</text>
+<text xml:space="preserve" text-anchor="start" x="664.68" y="-713.8" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="668.57" y="-713.8" font-family="Helvetica,sans-Serif" font-size="14.00"> [DATETIME]</text>
+<polygon fill="none" stroke="black" points="612.2,-676.8 612.2,-703.6 1112.24,-703.6 1112.24,-676.8 612.2,-676.8"/>
+<text xml:space="preserve" text-anchor="start" x="617.2" y="-687" font-family="Helvetica,sans-Serif" font-size="14.00">title</text>
+<text xml:space="preserve" text-anchor="start" x="638.98" y="-687" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="642.87" y="-687" font-family="Helvetica,sans-Serif" font-size="14.00"> [VARCHAR(200) COLLATE "utf8mb4_unicode_ci"]</text>
+<text xml:space="preserve" text-anchor="start" x="962.51" y="-687" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="612.2,-650 612.2,-676.8 1112.24,-676.8 1112.24,-650 612.2,-650"/>
+<text xml:space="preserve" text-anchor="start" x="617.2" y="-660.2" font-family="Helvetica,sans-Serif" font-size="14.00">user_id</text>
+<text xml:space="preserve" text-anchor="start" x="663.11" y="-660.2" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="667" y="-660.2" font-family="Helvetica,sans-Serif" font-size="14.00"> [INTEGER]</text>
+<text xml:space="preserve" text-anchor="start" x="740.9" y="-660.2" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+</g>
+<!-- users&#45;&#45;in_app_notifications -->
+<g id="edge7" class="edge">
+<title>users:id--in_app_notifications:user_id</title>
+<path fill="none" stroke="#7f7f7f" stroke-dasharray="5,2" d="M516.8,-1017.8C598.3,-1017.8 529.69,-663.4 611.2,-663.4"/>
+<text xml:space="preserve" text-anchor="start" x="587.09" y="-650.8" font-family="Times,serif" font-size="14.00">0..N</text>
+<text xml:space="preserve" text-anchor="start" x="516.8" y="-1009.4" font-family="Times,serif" font-size="14.00">1</text>
+</g>
+<!-- orders -->
+<g id="node9" class="node">
+<title>orders</title>
+<polygon fill="none" stroke="black" points="1208.63,-1990.6 1208.63,-2019.8 1695.43,-2019.8 1695.43,-1990.6 1208.63,-1990.6"/>
+<text xml:space="preserve" text-anchor="start" x="1427.14" y="-2001.4" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="16.00">orders</text>
+<polygon fill="none" stroke="black" points="1208.63,-1963.8 1208.63,-1990.6 1695.43,-1990.6 1695.43,-1963.8 1208.63,-1963.8"/>
+<text xml:space="preserve" text-anchor="start" x="1213.63" y="-1974" font-family="Helvetica,sans-Serif" text-decoration="underline" font-size="14.00">id</text>
+<text xml:space="preserve" text-anchor="start" x="1224.53" y="-1974" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1228.42" y="-1974" font-family="Helvetica,sans-Serif" font-size="14.00"> [INTEGER]</text>
+<text xml:space="preserve" text-anchor="start" x="1302.32" y="-1974" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="1208.63,-1937 1208.63,-1963.8 1695.43,-1963.8 1695.43,-1937 1208.63,-1937"/>
+<text xml:space="preserve" text-anchor="start" x="1213.63" y="-1947.2" font-family="Helvetica,sans-Serif" font-size="14.00">created_at</text>
+<text xml:space="preserve" text-anchor="start" x="1279.79" y="-1947.2" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1283.68" y="-1947.2" font-family="Helvetica,sans-Serif" font-size="14.00"> [DATETIME]</text>
+<polygon fill="none" stroke="black" points="1208.63,-1910.2 1208.63,-1937 1695.43,-1937 1695.43,-1910.2 1208.63,-1910.2"/>
+<text xml:space="preserve" text-anchor="start" x="1213.63" y="-1920.4" font-family="Helvetica,sans-Serif" font-size="14.00">customer_id</text>
+<text xml:space="preserve" text-anchor="start" x="1289.89" y="-1920.4" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1293.78" y="-1920.4" font-family="Helvetica,sans-Serif" font-size="14.00"> [INTEGER]</text>
+<text xml:space="preserve" text-anchor="start" x="1367.67" y="-1920.4" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="1208.63,-1883.4 1208.63,-1910.2 1695.43,-1910.2 1695.43,-1883.4 1208.63,-1883.4"/>
+<text xml:space="preserve" text-anchor="start" x="1213.63" y="-1893.6" font-family="Helvetica,sans-Serif" font-size="14.00">notes</text>
+<text xml:space="preserve" text-anchor="start" x="1247.88" y="-1893.6" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1251.77" y="-1893.6" font-family="Helvetica,sans-Serif" font-size="14.00"> [TEXT COLLATE "utf8mb4_unicode_ci"]</text>
+<polygon fill="none" stroke="black" points="1208.63,-1856.6 1208.63,-1883.4 1695.43,-1883.4 1695.43,-1856.6 1208.63,-1856.6"/>
+<text xml:space="preserve" text-anchor="start" x="1213.63" y="-1866.8" font-family="Helvetica,sans-Serif" font-size="14.00">order_number</text>
+<text xml:space="preserve" text-anchor="start" x="1301.57" y="-1866.8" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1305.46" y="-1866.8" font-family="Helvetica,sans-Serif" font-size="14.00"> [VARCHAR(50) COLLATE "utf8mb4_unicode_ci"]</text>
+<text xml:space="preserve" text-anchor="start" x="1617.31" y="-1866.8" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="1208.63,-1829.8 1208.63,-1856.6 1695.43,-1856.6 1695.43,-1829.8 1208.63,-1829.8"/>
+<text xml:space="preserve" text-anchor="start" x="1213.63" y="-1840" font-family="Helvetica,sans-Serif" font-size="14.00">restaurant_id</text>
+<text xml:space="preserve" text-anchor="start" x="1295.35" y="-1840" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1299.24" y="-1840" font-family="Helvetica,sans-Serif" font-size="14.00"> [INTEGER]</text>
+<text xml:space="preserve" text-anchor="start" x="1373.14" y="-1840" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="1208.63,-1803 1208.63,-1829.8 1695.43,-1829.8 1695.43,-1803 1208.63,-1803"/>
+<text xml:space="preserve" text-anchor="start" x="1213.63" y="-1813.2" font-family="Helvetica,sans-Serif" font-size="14.00">status</text>
+<text xml:space="preserve" text-anchor="start" x="1250.99" y="-1813.2" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1254.88" y="-1813.2" font-family="Helvetica,sans-Serif" font-size="14.00"> [ENUM]</text>
+<polygon fill="none" stroke="black" points="1208.63,-1776.2 1208.63,-1803 1695.43,-1803 1695.43,-1776.2 1208.63,-1776.2"/>
+<text xml:space="preserve" text-anchor="start" x="1213.63" y="-1786.4" font-family="Helvetica,sans-Serif" font-size="14.00">total_amount</text>
+<text xml:space="preserve" text-anchor="start" x="1294.58" y="-1786.4" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1298.47" y="-1786.4" font-family="Helvetica,sans-Serif" font-size="14.00"> [DECIMAL(10, 2)]</text>
+<text xml:space="preserve" text-anchor="start" x="1412.83" y="-1786.4" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="1208.63,-1749.4 1208.63,-1776.2 1695.43,-1776.2 1695.43,-1749.4 1208.63,-1749.4"/>
+<text xml:space="preserve" text-anchor="start" x="1213.63" y="-1759.6" font-family="Helvetica,sans-Serif" font-size="14.00">updated_at</text>
+<text xml:space="preserve" text-anchor="start" x="1283.7" y="-1759.6" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1287.59" y="-1759.6" font-family="Helvetica,sans-Serif" font-size="14.00"> [DATETIME]</text>
+</g>
+<!-- users&#45;&#45;orders -->
+<g id="edge10" class="edge">
+<title>users:id--orders:customer_id</title>
+<path fill="none" stroke="#7f7f7f" stroke-dasharray="5,2" d="M516.8,-1017.8C573.37,-1017.8 566.15,-1473.06 596.8,-1520.6 773.05,-1793.95 882.39,-1923.6 1207.63,-1923.6"/>
+<text xml:space="preserve" text-anchor="start" x="1183.52" y="-1911" font-family="Times,serif" font-size="14.00">0..N</text>
+<text xml:space="preserve" text-anchor="start" x="509.8" y="-1005.2" font-family="Times,serif" font-size="14.00">1</text>
+</g>
+<!-- order_tracking -->
+<g id="node10" class="node">
+<title>order_tracking</title>
+<polygon fill="none" stroke="black" points="1784.43,-2210.4 1784.43,-2239.6 2220.65,-2239.6 2220.65,-2210.4 1784.43,-2210.4"/>
+<text xml:space="preserve" text-anchor="start" x="1946.52" y="-2221.2" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="16.00">order_tracking</text>
+<polygon fill="none" stroke="black" points="1784.43,-2183.6 1784.43,-2210.4 2220.65,-2210.4 2220.65,-2183.6 1784.43,-2183.6"/>
+<text xml:space="preserve" text-anchor="start" x="1789.43" y="-2193.8" font-family="Helvetica,sans-Serif" text-decoration="underline" font-size="14.00">id</text>
+<text xml:space="preserve" text-anchor="start" x="1800.33" y="-2193.8" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1804.22" y="-2193.8" font-family="Helvetica,sans-Serif" font-size="14.00"> [INTEGER]</text>
+<text xml:space="preserve" text-anchor="start" x="1878.12" y="-2193.8" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="1784.43,-2156.8 1784.43,-2183.6 2220.65,-2183.6 2220.65,-2156.8 1784.43,-2156.8"/>
+<text xml:space="preserve" text-anchor="start" x="1789.43" y="-2167" font-family="Helvetica,sans-Serif" font-size="14.00">message</text>
+<text xml:space="preserve" text-anchor="start" x="1846.24" y="-2167" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1850.13" y="-2167" font-family="Helvetica,sans-Serif" font-size="14.00"> [TEXT COLLATE "utf8mb4_unicode_ci"]</text>
+<polygon fill="none" stroke="black" points="1784.43,-2130 1784.43,-2156.8 2220.65,-2156.8 2220.65,-2130 1784.43,-2130"/>
+<text xml:space="preserve" text-anchor="start" x="1789.43" y="-2140.2" font-family="Helvetica,sans-Serif" font-size="14.00">order_id</text>
+<text xml:space="preserve" text-anchor="start" x="1840.8" y="-2140.2" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1844.69" y="-2140.2" font-family="Helvetica,sans-Serif" font-size="14.00"> [INTEGER]</text>
+<text xml:space="preserve" text-anchor="start" x="1918.58" y="-2140.2" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="1784.43,-2103.2 1784.43,-2130 2220.65,-2130 2220.65,-2103.2 1784.43,-2103.2"/>
+<text xml:space="preserve" text-anchor="start" x="1789.43" y="-2113.4" font-family="Helvetica,sans-Serif" font-size="14.00">status</text>
+<text xml:space="preserve" text-anchor="start" x="1826.79" y="-2113.4" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1830.67" y="-2113.4" font-family="Helvetica,sans-Serif" font-size="14.00"> [VARCHAR(50) COLLATE "utf8mb4_unicode_ci"]</text>
+<text xml:space="preserve" text-anchor="start" x="2142.52" y="-2113.4" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="1784.43,-2076.4 1784.43,-2103.2 2220.65,-2103.2 2220.65,-2076.4 1784.43,-2076.4"/>
+<text xml:space="preserve" text-anchor="start" x="1789.43" y="-2086.6" font-family="Helvetica,sans-Serif" font-size="14.00">timestamp</text>
+<text xml:space="preserve" text-anchor="start" x="1854.01" y="-2086.6" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1857.9" y="-2086.6" font-family="Helvetica,sans-Serif" font-size="14.00"> [DATETIME]</text>
+<polygon fill="none" stroke="black" points="1784.43,-2049.6 1784.43,-2076.4 2220.65,-2076.4 2220.65,-2049.6 1784.43,-2049.6"/>
+<text xml:space="preserve" text-anchor="start" x="1789.43" y="-2059.8" font-family="Helvetica,sans-Serif" font-size="14.00">updated_by</text>
+<text xml:space="preserve" text-anchor="start" x="1862.61" y="-2059.8" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1866.5" y="-2059.8" font-family="Helvetica,sans-Serif" font-size="14.00"> [INTEGER]</text>
+</g>
+<!-- users&#45;&#45;order_tracking -->
+<g id="edge12" class="edge">
+<title>users:id--order_tracking:updated_by</title>
+<path fill="none" stroke="#7f7f7f" stroke-dasharray="5,2" d="M516.8,-1017.8C566.43,-1017.8 571.76,-1864.75 596.8,-1907.6 668.78,-2030.78 718.55,-2089.6 861.22,-2089.6 861.22,-2089.6 861.22,-2089.6 1453.03,-2089.6 1600.35,-2089.6 1636.11,-2063 1783.43,-2063"/>
+<text xml:space="preserve" text-anchor="start" x="1759.32" y="-2050.4" font-family="Times,serif" font-size="14.00">0..N</text>
+<text xml:space="preserve" text-anchor="start" x="516.8" y="-1009.4" font-family="Times,serif" font-size="14.00">{0,1}</text>
+</g>
+<!-- promotions -->
+<g id="node11" class="node">
+<title>promotions</title>
+<polygon fill="none" stroke="black" points="648,-595 648,-624.2 1076.43,-624.2 1076.43,-595 648,-595"/>
+<text xml:space="preserve" text-anchor="start" x="818.22" y="-605.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="16.00">promotions</text>
+<polygon fill="none" stroke="black" points="648,-568.2 648,-595 1076.43,-595 1076.43,-568.2 648,-568.2"/>
+<text xml:space="preserve" text-anchor="start" x="653" y="-578.4" font-family="Helvetica,sans-Serif" text-decoration="underline" font-size="14.00">id</text>
+<text xml:space="preserve" text-anchor="start" x="663.9" y="-578.4" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="667.79" y="-578.4" font-family="Helvetica,sans-Serif" font-size="14.00"> [INTEGER]</text>
+<text xml:space="preserve" text-anchor="start" x="741.68" y="-578.4" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="648,-541.4 648,-568.2 1076.43,-568.2 1076.43,-541.4 648,-541.4"/>
+<text xml:space="preserve" text-anchor="start" x="653" y="-551.6" font-family="Helvetica,sans-Serif" font-size="14.00">code</text>
+<text xml:space="preserve" text-anchor="start" x="683.36" y="-551.6" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="687.25" y="-551.6" font-family="Helvetica,sans-Serif" font-size="14.00"> [VARCHAR(50) COLLATE "utf8mb4_unicode_ci"]</text>
+<polygon fill="none" stroke="black" points="648,-514.6 648,-541.4 1076.43,-541.4 1076.43,-514.6 648,-514.6"/>
+<text xml:space="preserve" text-anchor="start" x="653" y="-524.8" font-family="Helvetica,sans-Serif" font-size="14.00">created_at</text>
+<text xml:space="preserve" text-anchor="start" x="719.16" y="-524.8" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="723.05" y="-524.8" font-family="Helvetica,sans-Serif" font-size="14.00"> [DATETIME]</text>
+<polygon fill="none" stroke="black" points="648,-487.8 648,-514.6 1076.43,-514.6 1076.43,-487.8 648,-487.8"/>
+<text xml:space="preserve" text-anchor="start" x="653" y="-498" font-family="Helvetica,sans-Serif" font-size="14.00">created_by</text>
+<text xml:space="preserve" text-anchor="start" x="722.27" y="-498" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="726.16" y="-498" font-family="Helvetica,sans-Serif" font-size="14.00"> [INTEGER]</text>
+<text xml:space="preserve" text-anchor="start" x="800.05" y="-498" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="648,-461 648,-487.8 1076.43,-487.8 1076.43,-461 648,-461"/>
+<text xml:space="preserve" text-anchor="start" x="653" y="-471.2" font-family="Helvetica,sans-Serif" font-size="14.00">description</text>
+<text xml:space="preserve" text-anchor="start" x="720.7" y="-471.2" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="724.59" y="-471.2" font-family="Helvetica,sans-Serif" font-size="14.00"> [TEXT COLLATE "utf8mb4_unicode_ci"]</text>
+<text xml:space="preserve" text-anchor="start" x="978.87" y="-471.2" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="648,-434.2 648,-461 1076.43,-461 1076.43,-434.2 648,-434.2"/>
+<text xml:space="preserve" text-anchor="start" x="653" y="-444.4" font-family="Helvetica,sans-Serif" font-size="14.00">discount_amount</text>
+<text xml:space="preserve" text-anchor="start" x="759.63" y="-444.4" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="763.52" y="-444.4" font-family="Helvetica,sans-Serif" font-size="14.00"> [DECIMAL(10, 2)]</text>
+<polygon fill="none" stroke="black" points="648,-407.4 648,-434.2 1076.43,-434.2 1076.43,-407.4 648,-407.4"/>
+<text xml:space="preserve" text-anchor="start" x="653" y="-417.6" font-family="Helvetica,sans-Serif" font-size="14.00">discount_percentage</text>
+<text xml:space="preserve" text-anchor="start" x="782.98" y="-417.6" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="786.87" y="-417.6" font-family="Helvetica,sans-Serif" font-size="14.00"> [DECIMAL(5, 2)]</text>
+<text xml:space="preserve" text-anchor="start" x="893.45" y="-417.6" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="648,-380.6 648,-407.4 1076.43,-407.4 1076.43,-380.6 648,-380.6"/>
+<text xml:space="preserve" text-anchor="start" x="653" y="-390.8" font-family="Helvetica,sans-Serif" font-size="14.00">is_active</text>
+<text xml:space="preserve" text-anchor="start" x="707.47" y="-390.8" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="711.36" y="-390.8" font-family="Helvetica,sans-Serif" font-size="14.00"> [TINYINT]</text>
+<polygon fill="none" stroke="black" points="648,-353.8 648,-380.6 1076.43,-380.6 1076.43,-353.8 648,-353.8"/>
+<text xml:space="preserve" text-anchor="start" x="653" y="-364" font-family="Helvetica,sans-Serif" font-size="14.00">max_discount_amount</text>
+<text xml:space="preserve" text-anchor="start" x="793.86" y="-364" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="797.75" y="-364" font-family="Helvetica,sans-Serif" font-size="14.00"> [DECIMAL(10, 2)]</text>
+<polygon fill="none" stroke="black" points="648,-327 648,-353.8 1076.43,-353.8 1076.43,-327 648,-327"/>
+<text xml:space="preserve" text-anchor="start" x="653" y="-337.2" font-family="Helvetica,sans-Serif" font-size="14.00">min_order_amount</text>
+<text xml:space="preserve" text-anchor="start" x="770.51" y="-337.2" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="774.4" y="-337.2" font-family="Helvetica,sans-Serif" font-size="14.00"> [DECIMAL(10, 2)]</text>
+<polygon fill="none" stroke="black" points="648,-300.2 648,-327 1076.43,-327 1076.43,-300.2 648,-300.2"/>
+<text xml:space="preserve" text-anchor="start" x="653" y="-310.4" font-family="Helvetica,sans-Serif" font-size="14.00">title</text>
+<text xml:space="preserve" text-anchor="start" x="674.79" y="-310.4" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="678.68" y="-310.4" font-family="Helvetica,sans-Serif" font-size="14.00"> [VARCHAR(200) COLLATE "utf8mb4_unicode_ci"]</text>
+<text xml:space="preserve" text-anchor="start" x="998.31" y="-310.4" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="648,-273.4 648,-300.2 1076.43,-300.2 1076.43,-273.4 648,-273.4"/>
+<text xml:space="preserve" text-anchor="start" x="653" y="-283.6" font-family="Helvetica,sans-Serif" font-size="14.00">usage_count</text>
+<text xml:space="preserve" text-anchor="start" x="733.18" y="-283.6" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="737.07" y="-283.6" font-family="Helvetica,sans-Serif" font-size="14.00"> [INTEGER]</text>
+<polygon fill="none" stroke="black" points="648,-246.6 648,-273.4 1076.43,-273.4 1076.43,-246.6 648,-246.6"/>
+<text xml:space="preserve" text-anchor="start" x="653" y="-256.8" font-family="Helvetica,sans-Serif" font-size="14.00">usage_limit</text>
+<text xml:space="preserve" text-anchor="start" x="723.81" y="-256.8" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="727.7" y="-256.8" font-family="Helvetica,sans-Serif" font-size="14.00"> [INTEGER]</text>
+<polygon fill="none" stroke="black" points="648,-219.8 648,-246.6 1076.43,-246.6 1076.43,-219.8 648,-219.8"/>
+<text xml:space="preserve" text-anchor="start" x="653" y="-230" font-family="Helvetica,sans-Serif" font-size="14.00">valid_from</text>
+<text xml:space="preserve" text-anchor="start" x="717.58" y="-230" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="721.47" y="-230" font-family="Helvetica,sans-Serif" font-size="14.00"> [DATETIME]</text>
+<text xml:space="preserve" text-anchor="start" x="803.92" y="-230" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="648,-193 648,-219.8 1076.43,-219.8 1076.43,-193 648,-193"/>
+<text xml:space="preserve" text-anchor="start" x="653" y="-203.2" font-family="Helvetica,sans-Serif" font-size="14.00">valid_until</text>
+<text xml:space="preserve" text-anchor="start" x="715.26" y="-203.2" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="719.15" y="-203.2" font-family="Helvetica,sans-Serif" font-size="14.00"> [DATETIME]</text>
+<text xml:space="preserve" text-anchor="start" x="801.6" y="-203.2" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+</g>
+<!-- users&#45;&#45;promotions -->
+<g id="edge14" class="edge">
+<title>users:id--promotions:created_by</title>
+<path fill="none" stroke="#7f7f7f" stroke-dasharray="5,2" d="M516.8,-1017.8C560.08,-1017.8 584.8,-678.18 596.8,-636.6 614.6,-574.94 582.82,-501.2 647,-501.2"/>
+<text xml:space="preserve" text-anchor="start" x="622.89" y="-505.4" font-family="Times,serif" font-size="14.00">0..N</text>
+<text xml:space="preserve" text-anchor="start" x="509.8" y="-1022" font-family="Times,serif" font-size="14.00">1</text>
+</g>
+<!-- reviews -->
+<g id="node12" class="node">
+<title>reviews</title>
+<polygon fill="none" stroke="black" points="1839.67,-1460.8 1839.67,-1490 2165.41,-1490 2165.41,-1460.8 1839.67,-1460.8"/>
+<text xml:space="preserve" text-anchor="start" x="1973.19" y="-1471.6" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="16.00">reviews</text>
+<polygon fill="none" stroke="black" points="1839.67,-1434 1839.67,-1460.8 2165.41,-1460.8 2165.41,-1434 1839.67,-1434"/>
+<text xml:space="preserve" text-anchor="start" x="1844.67" y="-1444.2" font-family="Helvetica,sans-Serif" text-decoration="underline" font-size="14.00">id</text>
+<text xml:space="preserve" text-anchor="start" x="1855.57" y="-1444.2" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1859.46" y="-1444.2" font-family="Helvetica,sans-Serif" font-size="14.00"> [INTEGER]</text>
+<text xml:space="preserve" text-anchor="start" x="1933.35" y="-1444.2" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="1839.67,-1407.2 1839.67,-1434 2165.41,-1434 2165.41,-1407.2 1839.67,-1407.2"/>
+<text xml:space="preserve" text-anchor="start" x="1844.67" y="-1417.4" font-family="Helvetica,sans-Serif" font-size="14.00">comment</text>
+<text xml:space="preserve" text-anchor="start" x="1902.24" y="-1417.4" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1906.13" y="-1417.4" font-family="Helvetica,sans-Serif" font-size="14.00"> [TEXT COLLATE "utf8mb4_unicode_ci"]</text>
+<polygon fill="none" stroke="black" points="1839.67,-1380.4 1839.67,-1407.2 2165.41,-1407.2 2165.41,-1380.4 1839.67,-1380.4"/>
+<text xml:space="preserve" text-anchor="start" x="1844.67" y="-1390.6" font-family="Helvetica,sans-Serif" font-size="14.00">created_at</text>
+<text xml:space="preserve" text-anchor="start" x="1910.83" y="-1390.6" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1914.72" y="-1390.6" font-family="Helvetica,sans-Serif" font-size="14.00"> [DATETIME]</text>
+<polygon fill="none" stroke="black" points="1839.67,-1353.6 1839.67,-1380.4 2165.41,-1380.4 2165.41,-1353.6 1839.67,-1353.6"/>
+<text xml:space="preserve" text-anchor="start" x="1844.67" y="-1363.8" font-family="Helvetica,sans-Serif" font-size="14.00">menu_item_id</text>
+<text xml:space="preserve" text-anchor="start" x="1932.61" y="-1363.8" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1936.5" y="-1363.8" font-family="Helvetica,sans-Serif" font-size="14.00"> [INTEGER]</text>
+<polygon fill="none" stroke="black" points="1839.67,-1326.8 1839.67,-1353.6 2165.41,-1353.6 2165.41,-1326.8 1839.67,-1326.8"/>
+<text xml:space="preserve" text-anchor="start" x="1844.67" y="-1337" font-family="Helvetica,sans-Serif" font-size="14.00">rating</text>
+<text xml:space="preserve" text-anchor="start" x="1879.69" y="-1337" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1883.58" y="-1337" font-family="Helvetica,sans-Serif" font-size="14.00"> [INTEGER]</text>
+<text xml:space="preserve" text-anchor="start" x="1957.48" y="-1337" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="1839.67,-1300 1839.67,-1326.8 2165.41,-1326.8 2165.41,-1300 1839.67,-1300"/>
+<text xml:space="preserve" text-anchor="start" x="1844.67" y="-1310.2" font-family="Helvetica,sans-Serif" font-size="14.00">restaurant_id</text>
+<text xml:space="preserve" text-anchor="start" x="1926.39" y="-1310.2" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1930.28" y="-1310.2" font-family="Helvetica,sans-Serif" font-size="14.00"> [INTEGER]</text>
+<text xml:space="preserve" text-anchor="start" x="2004.17" y="-1310.2" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="1839.67,-1273.2 1839.67,-1300 2165.41,-1300 2165.41,-1273.2 1839.67,-1273.2"/>
+<text xml:space="preserve" text-anchor="start" x="1844.67" y="-1283.4" font-family="Helvetica,sans-Serif" font-size="14.00">user_id</text>
+<text xml:space="preserve" text-anchor="start" x="1890.59" y="-1283.4" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1894.48" y="-1283.4" font-family="Helvetica,sans-Serif" font-size="14.00"> [INTEGER]</text>
+<text xml:space="preserve" text-anchor="start" x="1968.37" y="-1283.4" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+</g>
+<!-- users&#45;&#45;reviews -->
+<g id="edge16" class="edge">
+<title>users:id--reviews:user_id</title>
+<path fill="none" stroke="#7f7f7f" stroke-dasharray="5,2" d="M516.8,-1017.8C526.43,-1017.8 851.59,-979.6 861.22,-979.6 861.22,-979.6 861.22,-979.6 1453.03,-979.6 1564.64,-979.6 1611.56,-935.24 1703.43,-998.6 1819.84,-1078.88 1697.26,-1286.6 1838.67,-1286.6"/>
+<text xml:space="preserve" text-anchor="start" x="1814.56" y="-1274" font-family="Times,serif" font-size="14.00">0..N</text>
+<text xml:space="preserve" text-anchor="start" x="509.8" y="-1005.2" font-family="Times,serif" font-size="14.00">1</text>
+</g>
+<!-- user_preferences -->
+<g id="node13" class="node">
+<title>user_preferences</title>
+<polygon fill="none" stroke="black" points="604.8,-138 604.8,-167.2 1119.63,-167.2 1119.63,-138 604.8,-138"/>
+<text xml:space="preserve" text-anchor="start" x="795.51" y="-148.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="16.00">user_preferences</text>
+<polygon fill="none" stroke="black" points="604.8,-111.2 604.8,-138 1119.63,-138 1119.63,-111.2 604.8,-111.2"/>
+<text xml:space="preserve" text-anchor="start" x="609.8" y="-121.4" font-family="Helvetica,sans-Serif" text-decoration="underline" font-size="14.00">id</text>
+<text xml:space="preserve" text-anchor="start" x="620.7" y="-121.4" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="624.59" y="-121.4" font-family="Helvetica,sans-Serif" font-size="14.00"> [INTEGER]</text>
+<text xml:space="preserve" text-anchor="start" x="698.48" y="-121.4" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="604.8,-84.4 604.8,-111.2 1119.63,-111.2 1119.63,-84.4 604.8,-84.4"/>
+<text xml:space="preserve" text-anchor="start" x="609.8" y="-94.6" font-family="Helvetica,sans-Serif" font-size="14.00">created_at</text>
+<text xml:space="preserve" text-anchor="start" x="675.96" y="-94.6" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="679.85" y="-94.6" font-family="Helvetica,sans-Serif" font-size="14.00"> [DATETIME]</text>
+<polygon fill="none" stroke="black" points="604.8,-57.6 604.8,-84.4 1119.63,-84.4 1119.63,-57.6 604.8,-57.6"/>
+<text xml:space="preserve" text-anchor="start" x="609.8" y="-67.8" font-family="Helvetica,sans-Serif" font-size="14.00">preference_type</text>
+<text xml:space="preserve" text-anchor="start" x="710.98" y="-67.8" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="714.87" y="-67.8" font-family="Helvetica,sans-Serif" font-size="14.00"> [VARCHAR(50) COLLATE "utf8mb4_unicode_ci"]</text>
+<text xml:space="preserve" text-anchor="start" x="1026.72" y="-67.8" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="604.8,-30.8 604.8,-57.6 1119.63,-57.6 1119.63,-30.8 604.8,-30.8"/>
+<text xml:space="preserve" text-anchor="start" x="609.8" y="-41" font-family="Helvetica,sans-Serif" font-size="14.00">preference_value</text>
+<text xml:space="preserve" text-anchor="start" x="717.99" y="-41" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="721.88" y="-41" font-family="Helvetica,sans-Serif" font-size="14.00"> [VARCHAR(200) COLLATE "utf8mb4_unicode_ci"]</text>
+<text xml:space="preserve" text-anchor="start" x="1041.51" y="-41" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="604.8,-4 604.8,-30.8 1119.63,-30.8 1119.63,-4 604.8,-4"/>
+<text xml:space="preserve" text-anchor="start" x="609.8" y="-14.2" font-family="Helvetica,sans-Serif" font-size="14.00">user_id</text>
+<text xml:space="preserve" text-anchor="start" x="655.72" y="-14.2" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="659.61" y="-14.2" font-family="Helvetica,sans-Serif" font-size="14.00"> [INTEGER]</text>
+<text xml:space="preserve" text-anchor="start" x="733.5" y="-14.2" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+</g>
+<!-- users&#45;&#45;user_preferences -->
+<g id="edge18" class="edge">
+<title>users:id--user_preferences:user_id</title>
+<path fill="none" stroke="#7f7f7f" stroke-dasharray="5,2" d="M516.8,-1017.8C572.59,-1017.8 548.01,-17.4 603.8,-17.4"/>
+<text xml:space="preserve" text-anchor="start" x="579.69" y="-4.8" font-family="Times,serif" font-size="14.00">0..N</text>
+<text xml:space="preserve" text-anchor="start" x="509.8" y="-1022" font-family="Times,serif" font-size="14.00">1</text>
+</g>
+<!-- menu_items -->
+<g id="node4" class="node">
+<title>menu_items</title>
+<polygon fill="none" stroke="black" points="1225.75,-1694.2 1225.75,-1723.4 1678.31,-1723.4 1678.31,-1694.2 1225.75,-1694.2"/>
+<text xml:space="preserve" text-anchor="start" x="1405.35" y="-1705" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="16.00">menu_items</text>
+<polygon fill="none" stroke="black" points="1225.75,-1667.4 1225.75,-1694.2 1678.31,-1694.2 1678.31,-1667.4 1225.75,-1667.4"/>
+<text xml:space="preserve" text-anchor="start" x="1230.75" y="-1677.6" font-family="Helvetica,sans-Serif" text-decoration="underline" font-size="14.00">id</text>
+<text xml:space="preserve" text-anchor="start" x="1241.65" y="-1677.6" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1245.54" y="-1677.6" font-family="Helvetica,sans-Serif" font-size="14.00"> [INTEGER]</text>
+<text xml:space="preserve" text-anchor="start" x="1319.44" y="-1677.6" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="1225.75,-1640.6 1225.75,-1667.4 1678.31,-1667.4 1678.31,-1640.6 1225.75,-1640.6"/>
+<text xml:space="preserve" text-anchor="start" x="1230.75" y="-1650.8" font-family="Helvetica,sans-Serif" font-size="14.00">category</text>
+<text xml:space="preserve" text-anchor="start" x="1284.45" y="-1650.8" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1288.34" y="-1650.8" font-family="Helvetica,sans-Serif" font-size="14.00"> [VARCHAR(50) COLLATE "utf8mb4_unicode_ci"]</text>
+<text xml:space="preserve" text-anchor="start" x="1600.19" y="-1650.8" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="1225.75,-1613.8 1225.75,-1640.6 1678.31,-1640.6 1678.31,-1613.8 1225.75,-1613.8"/>
+<text xml:space="preserve" text-anchor="start" x="1230.75" y="-1624" font-family="Helvetica,sans-Serif" font-size="14.00">created_at</text>
+<text xml:space="preserve" text-anchor="start" x="1296.91" y="-1624" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1300.8" y="-1624" font-family="Helvetica,sans-Serif" font-size="14.00"> [DATETIME]</text>
+<polygon fill="none" stroke="black" points="1225.75,-1587 1225.75,-1613.8 1678.31,-1613.8 1678.31,-1587 1225.75,-1587"/>
+<text xml:space="preserve" text-anchor="start" x="1230.75" y="-1597.2" font-family="Helvetica,sans-Serif" font-size="14.00">description</text>
+<text xml:space="preserve" text-anchor="start" x="1298.46" y="-1597.2" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1302.35" y="-1597.2" font-family="Helvetica,sans-Serif" font-size="14.00"> [TEXT COLLATE "utf8mb4_unicode_ci"]</text>
+<polygon fill="none" stroke="black" points="1225.75,-1560.2 1225.75,-1587 1678.31,-1587 1678.31,-1560.2 1225.75,-1560.2"/>
+<text xml:space="preserve" text-anchor="start" x="1230.75" y="-1570.4" font-family="Helvetica,sans-Serif" font-size="14.00">diet_type</text>
+<text xml:space="preserve" text-anchor="start" x="1287.57" y="-1570.4" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1291.46" y="-1570.4" font-family="Helvetica,sans-Serif" font-size="14.00"> [ENUM]</text>
+<text xml:space="preserve" text-anchor="start" x="1344.35" y="-1570.4" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="1225.75,-1533.4 1225.75,-1560.2 1678.31,-1560.2 1678.31,-1533.4 1225.75,-1533.4"/>
+<text xml:space="preserve" text-anchor="start" x="1230.75" y="-1543.6" font-family="Helvetica,sans-Serif" font-size="14.00">image_url</text>
+<text xml:space="preserve" text-anchor="start" x="1292.23" y="-1543.6" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1296.12" y="-1543.6" font-family="Helvetica,sans-Serif" font-size="14.00"> [VARCHAR(255) COLLATE "utf8mb4_unicode_ci"]</text>
+<polygon fill="none" stroke="black" points="1225.75,-1506.6 1225.75,-1533.4 1678.31,-1533.4 1678.31,-1506.6 1225.75,-1506.6"/>
+<text xml:space="preserve" text-anchor="start" x="1230.75" y="-1516.8" font-family="Helvetica,sans-Serif" font-size="14.00">is_available</text>
+<text xml:space="preserve" text-anchor="start" x="1303.91" y="-1516.8" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1307.8" y="-1516.8" font-family="Helvetica,sans-Serif" font-size="14.00"> [TINYINT]</text>
+<polygon fill="none" stroke="black" points="1225.75,-1479.8 1225.75,-1506.6 1678.31,-1506.6 1678.31,-1479.8 1225.75,-1479.8"/>
+<text xml:space="preserve" text-anchor="start" x="1230.75" y="-1490" font-family="Helvetica,sans-Serif" font-size="14.00">is_deal_of_day</text>
+<text xml:space="preserve" text-anchor="start" x="1324.94" y="-1490" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1328.83" y="-1490" font-family="Helvetica,sans-Serif" font-size="14.00"> [TINYINT]</text>
+<polygon fill="none" stroke="black" points="1225.75,-1453 1225.75,-1479.8 1678.31,-1479.8 1678.31,-1453 1225.75,-1453"/>
+<text xml:space="preserve" text-anchor="start" x="1230.75" y="-1463.2" font-family="Helvetica,sans-Serif" font-size="14.00">is_special</text>
+<text xml:space="preserve" text-anchor="start" x="1292.23" y="-1463.2" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1296.12" y="-1463.2" font-family="Helvetica,sans-Serif" font-size="14.00"> [TINYINT]</text>
+<polygon fill="none" stroke="black" points="1225.75,-1426.2 1225.75,-1453 1678.31,-1453 1678.31,-1426.2 1225.75,-1426.2"/>
+<text xml:space="preserve" text-anchor="start" x="1230.75" y="-1436.4" font-family="Helvetica,sans-Serif" font-size="14.00">name</text>
+<text xml:space="preserve" text-anchor="start" x="1265.77" y="-1436.4" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1269.66" y="-1436.4" font-family="Helvetica,sans-Serif" font-size="14.00"> [VARCHAR(100) COLLATE "utf8mb4_unicode_ci"]</text>
+<text xml:space="preserve" text-anchor="start" x="1589.3" y="-1436.4" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="1225.75,-1399.4 1225.75,-1426.2 1678.31,-1426.2 1678.31,-1399.4 1225.75,-1399.4"/>
+<text xml:space="preserve" text-anchor="start" x="1230.75" y="-1409.6" font-family="Helvetica,sans-Serif" font-size="14.00">preparation_time</text>
+<text xml:space="preserve" text-anchor="start" x="1335.82" y="-1409.6" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1339.71" y="-1409.6" font-family="Helvetica,sans-Serif" font-size="14.00"> [INTEGER]</text>
+<polygon fill="none" stroke="black" points="1225.75,-1372.6 1225.75,-1399.4 1678.31,-1399.4 1678.31,-1372.6 1225.75,-1372.6"/>
+<text xml:space="preserve" text-anchor="start" x="1230.75" y="-1382.8" font-family="Helvetica,sans-Serif" font-size="14.00">price</text>
+<text xml:space="preserve" text-anchor="start" x="1261.1" y="-1382.8" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1264.99" y="-1382.8" font-family="Helvetica,sans-Serif" font-size="14.00"> [DECIMAL(10, 2)]</text>
+<text xml:space="preserve" text-anchor="start" x="1379.35" y="-1382.8" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="1225.75,-1345.8 1225.75,-1372.6 1678.31,-1372.6 1678.31,-1345.8 1225.75,-1345.8"/>
+<text xml:space="preserve" text-anchor="start" x="1230.75" y="-1356" font-family="Helvetica,sans-Serif" font-size="14.00">restaurant_id</text>
+<text xml:space="preserve" text-anchor="start" x="1312.47" y="-1356" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1316.36" y="-1356" font-family="Helvetica,sans-Serif" font-size="14.00"> [INTEGER]</text>
+<text xml:space="preserve" text-anchor="start" x="1390.26" y="-1356" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+</g>
+<!-- menu_items&#45;&#45;cart -->
+<g id="edge1" class="edge">
+<title>menu_items:id--cart:menu_item_id</title>
+<path fill="none" stroke="#7f7f7f" stroke-dasharray="5,2" d="M1679.31,-1680.8C1749.6,-1680.8 1730.77,-1752.17 1776.43,-1805.6 1818.94,-1855.34 1811.69,-1913 1877.12,-1913"/>
+<text xml:space="preserve" text-anchor="start" x="1853.01" y="-1900.4" font-family="Times,serif" font-size="14.00">0..N</text>
+<text xml:space="preserve" text-anchor="start" x="1679.31" y="-1672.4" font-family="Times,serif" font-size="14.00">1</text>
+</g>
+<!-- order_items -->
+<g id="node8" class="node">
+<title>order_items</title>
+<polygon fill="none" stroke="black" points="1878.12,-1763 1878.12,-1792.2 2126.96,-1792.2 2126.96,-1763 1878.12,-1763"/>
+<text xml:space="preserve" text-anchor="start" x="1956.74" y="-1773.8" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="16.00">order_items</text>
+<polygon fill="none" stroke="black" points="1878.12,-1736.2 1878.12,-1763 2126.96,-1763 2126.96,-1736.2 1878.12,-1736.2"/>
+<text xml:space="preserve" text-anchor="start" x="1883.12" y="-1746.4" font-family="Helvetica,sans-Serif" text-decoration="underline" font-size="14.00">id</text>
+<text xml:space="preserve" text-anchor="start" x="1894.01" y="-1746.4" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1897.9" y="-1746.4" font-family="Helvetica,sans-Serif" font-size="14.00"> [INTEGER]</text>
+<text xml:space="preserve" text-anchor="start" x="1971.8" y="-1746.4" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="1878.12,-1709.4 1878.12,-1736.2 2126.96,-1736.2 2126.96,-1709.4 1878.12,-1709.4"/>
+<text xml:space="preserve" text-anchor="start" x="1883.12" y="-1719.6" font-family="Helvetica,sans-Serif" font-size="14.00">menu_item_id</text>
+<text xml:space="preserve" text-anchor="start" x="1971.05" y="-1719.6" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1974.94" y="-1719.6" font-family="Helvetica,sans-Serif" font-size="14.00"> [INTEGER]</text>
+<text xml:space="preserve" text-anchor="start" x="2048.84" y="-1719.6" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="1878.12,-1682.6 1878.12,-1709.4 2126.96,-1709.4 2126.96,-1682.6 1878.12,-1682.6"/>
+<text xml:space="preserve" text-anchor="start" x="1883.12" y="-1692.8" font-family="Helvetica,sans-Serif" font-size="14.00">order_id</text>
+<text xml:space="preserve" text-anchor="start" x="1934.48" y="-1692.8" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1938.37" y="-1692.8" font-family="Helvetica,sans-Serif" font-size="14.00"> [INTEGER]</text>
+<text xml:space="preserve" text-anchor="start" x="2012.27" y="-1692.8" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="1878.12,-1655.8 1878.12,-1682.6 2126.96,-1682.6 2126.96,-1655.8 1878.12,-1655.8"/>
+<text xml:space="preserve" text-anchor="start" x="1883.12" y="-1666" font-family="Helvetica,sans-Serif" font-size="14.00">price</text>
+<text xml:space="preserve" text-anchor="start" x="1913.46" y="-1666" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1917.35" y="-1666" font-family="Helvetica,sans-Serif" font-size="14.00"> [DECIMAL(10, 2)]</text>
+<text xml:space="preserve" text-anchor="start" x="2031.72" y="-1666" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+<polygon fill="none" stroke="black" points="1878.12,-1629 1878.12,-1655.8 2126.96,-1655.8 2126.96,-1629 1878.12,-1629"/>
+<text xml:space="preserve" text-anchor="start" x="1883.12" y="-1639.2" font-family="Helvetica,sans-Serif" font-size="14.00">quantity</text>
+<text xml:space="preserve" text-anchor="start" x="1932.15" y="-1639.2" font-family="Helvetica,sans-Serif" font-size="14.00"> </text>
+<text xml:space="preserve" text-anchor="start" x="1936.04" y="-1639.2" font-family="Helvetica,sans-Serif" font-size="14.00"> [INTEGER]</text>
+<text xml:space="preserve" text-anchor="start" x="2009.94" y="-1639.2" font-family="Helvetica,sans-Serif" font-size="14.00"> NOT NULL</text>
+</g>
+<!-- menu_items&#45;&#45;order_items -->
+<g id="edge8" class="edge">
+<title>menu_items:id--order_items:menu_item_id</title>
+<path fill="none" stroke="#7f7f7f" stroke-dasharray="5,2" d="M1679.31,-1680.8C1769.19,-1680.8 1787.24,-1722.8 1877.12,-1722.8"/>
+<text xml:space="preserve" text-anchor="start" x="1853.01" y="-1710.2" font-family="Times,serif" font-size="14.00">0..N</text>
+<text xml:space="preserve" text-anchor="start" x="1672.31" y="-1668.2" font-family="Times,serif" font-size="14.00">1</text>
+</g>
+<!-- menu_items&#45;&#45;reviews -->
+<g id="edge17" class="edge">
+<title>menu_items:id--reviews:menu_item_id</title>
+<path fill="none" stroke="#7f7f7f" stroke-dasharray="5,2" d="M1679.31,-1680.8C1835.73,-1680.8 1682.25,-1367 1838.67,-1367"/>
+<text xml:space="preserve" text-anchor="start" x="1814.56" y="-1354.4" font-family="Times,serif" font-size="14.00">0..N</text>
+<text xml:space="preserve" text-anchor="start" x="1679.31" y="-1672.4" font-family="Times,serif" font-size="14.00">{0,1}</text>
+</g>
+<!-- restaurants&#45;&#45;menu_items -->
+<g id="edge3" class="edge">
+<title>restaurants:id--menu_items:restaurant_id</title>
+<path fill="none" stroke="#7f7f7f" stroke-dasharray="5,2" d="M1101.56,-1465C1173.73,-1465 1152.58,-1359.2 1224.75,-1359.2"/>
+<text xml:space="preserve" text-anchor="start" x="1200.64" y="-1363.4" font-family="Times,serif" font-size="14.00">0..N</text>
+<text xml:space="preserve" text-anchor="start" x="1094.56" y="-1452.4" font-family="Times,serif" font-size="14.00">1</text>
+</g>
+<!-- restaurants&#45;&#45;feedbacks -->
+<g id="edge6" class="edge">
+<title>restaurants:id--feedbacks:restaurant_id</title>
+<path fill="none" stroke="#7f7f7f" stroke-dasharray="5,2" d="M1101.56,-1465C1180.52,-1465 1146.57,-1132 1225.53,-1132"/>
+<text xml:space="preserve" text-anchor="start" x="1201.42" y="-1119.4" font-family="Times,serif" font-size="14.00">0..N</text>
+<text xml:space="preserve" text-anchor="start" x="1101.56" y="-1452.4" font-family="Times,serif" font-size="14.00">{0,1}</text>
+</g>
+<!-- restaurants&#45;&#45;orders -->
+<g id="edge11" class="edge">
+<title>restaurants:id--orders:restaurant_id</title>
+<path fill="none" stroke="#7f7f7f" stroke-dasharray="5,2" d="M1101.56,-1465C1145.21,-1465 1163.99,-1843.2 1207.63,-1843.2"/>
+<text xml:space="preserve" text-anchor="start" x="1183.52" y="-1847.4" font-family="Times,serif" font-size="14.00">0..N</text>
+<text xml:space="preserve" text-anchor="start" x="1094.56" y="-1469.2" font-family="Times,serif" font-size="14.00">1</text>
+</g>
+<!-- restaurants&#45;&#45;reviews -->
+<g id="edge15" class="edge">
+<title>restaurants:id--reviews:restaurant_id</title>
+<path fill="none" stroke="#7f7f7f" stroke-dasharray="5,2" d="M1101.56,-1465C1175.06,-1465 1135.42,-1366.49 1200.63,-1332.6 1326.5,-1267.19 1696.82,-1313.4 1838.67,-1313.4"/>
+<text xml:space="preserve" text-anchor="start" x="1814.56" y="-1300.8" font-family="Times,serif" font-size="14.00">0..N</text>
+<text xml:space="preserve" text-anchor="start" x="1101.56" y="-1469.2" font-family="Times,serif" font-size="14.00">1</text>
+</g>
+<!-- orders&#45;&#45;order_items -->
+<g id="edge9" class="edge">
+<title>orders:id--order_items:order_id</title>
+<path fill="none" stroke="#7f7f7f" stroke-dasharray="5,2" d="M1696.43,-1977.2C1769.88,-1977.2 1736.78,-1894.42 1776.43,-1832.6 1817.15,-1769.11 1801.7,-1696 1877.12,-1696"/>
+<text xml:space="preserve" text-anchor="start" x="1853.01" y="-1683.4" font-family="Times,serif" font-size="14.00">0..N</text>
+<text xml:space="preserve" text-anchor="start" x="1689.43" y="-1981.4" font-family="Times,serif" font-size="14.00">1</text>
+</g>
+<!-- orders&#45;&#45;order_tracking -->
+<g id="edge13" class="edge">
+<title>orders:id--order_tracking:order_id</title>
+<path fill="none" stroke="#7f7f7f" stroke-dasharray="5,2" d="M1696.43,-1977.2C1738.12,-1977.2 1741.75,-2143.4 1783.43,-2143.4"/>
+<text xml:space="preserve" text-anchor="start" x="1759.32" y="-2130.8" font-family="Times,serif" font-size="14.00">0..N</text>
+<text xml:space="preserve" text-anchor="start" x="1696.43" y="-1981.4" font-family="Times,serif" font-size="14.00">1</text>
+</g>
+</g>
+</svg>

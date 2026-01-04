@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+myvenv/
+venv/
+instance/
+app.log
+migrations/versions/__pycache__/
+.git
+.gitignore
