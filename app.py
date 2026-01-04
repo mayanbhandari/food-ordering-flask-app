@@ -91,12 +91,16 @@ def create_app(config_name='default'):
     app.register_blueprint(api_bp, url_prefix='/api')
     app.register_blueprint(admin_bp, url_prefix='/admin')
 
+    #  Render-safe DB init + seed
     with app.app_context():
         try:
             db.create_all()
-            logger.info("Database tables ensured (create_all).")
+            from seed_data import seed_data
+            seed_data()
+            logger.info("Database tables ensured and seed data added.")
         except Exception:
             logger.error("Database initialization failed", exc_info=True)
+
 
     # Initialize advanced features
     try:
