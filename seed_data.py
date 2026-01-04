@@ -8,14 +8,8 @@ from datetime import time
 
 
 def seed_data():
-    if Restaurant.query.first():
-        return False
-
-    # insert data
-    db.session.commit()
-    return True
-
-
+        if Restaurant.query.first():
+            return False
 
         # Create admin
         admin = User(
@@ -424,8 +418,7 @@ def seed_data():
                     is_special=item_data.get("is_special", False),
                     is_deal_of_day=item_data.get("is_deal_of_day", False),
                     preparation_time=15,  # Default preparation time
-                    description=f"Delicious {
-                        item_data['name'].lower()} made with fresh ingredients",
+                    description=f"Delicious {item_data['name'].lower()} made with fresh ingredients",
                     diet_type=item_data["diet_type"],
                     image_url=item_data["image_url"]
                 )
@@ -602,6 +595,6 @@ def seed_data():
                 db.session.add(feedback)
 
         db.session.commit()
-        print(" Seed data created successfully with 6 restaurants, sample orders, reviews, and feedback!")
+        return True
 
 
