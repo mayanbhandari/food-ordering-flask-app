@@ -1,0 +1,199 @@
+{% extends "base.html" %}
+
+{% block title %}JustEat - Home{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section bg-primary text-white py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold mb-4">Order Your Favorite Food</h1>
+                <p class="lead mb-4">Discover amazing restaurants and order delicious food delivered right to your doorstep.</p>
+                <div class="d-flex gap-3">
+                    <a href="{{ url_for('restaurants') }}" class="btn btn-light btn-lg">
+                        <i class="fas fa-search me-2"></i>Browse Restaurants
+                    </a>
+                    {% if not current_user.is_authenticated %}
+                        <a href="{{ url_for('auth.register_restaurant') }}" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-store me-2"></i>Restaurant Owner?
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="text-center">
+                    <i class="fas fa-utensils display-1 opacity-75"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-12">
+                <h2 class="display-5 fw-bold">Why Choose JustEat?</h2>
+                <p class="lead text-muted">Experience the best food delivery service</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon bg-primary text-white rounded-circle mx-auto mb-3">
+                            <i class="fas fa-clock fa-2x"></i>
+                        </div>
+                        <h5 class="card-title">Fast Delivery</h5>
+                        <p class="card-text">Get your food delivered quickly and safely to your location.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon bg-success text-white rounded-circle mx-auto mb-3">
+                            <i class="fas fa-star fa-2x"></i>
+                        </div>
+                        <h5 class="card-title">Quality Food</h5>
+                        <p class="card-text">Order from top-rated restaurants with fresh, delicious food.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="feature-icon bg-warning text-white rounded-circle mx-auto mb-3">
+                            <i class="fas fa-mobile-alt fa-2x"></i>
+                        </div>
+                        <h5 class="card-title">Easy Ordering</h5>
+                        <p class="card-text">Simple and intuitive interface for hassle-free ordering.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Restaurants -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12">
+                <h2 class="display-5 fw-bold text-center">Featured Restaurants</h2>
+                <p class="lead text-muted text-center">Discover our top-rated restaurants</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            {% for restaurant in restaurants %}
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm restaurant-card">
+                    {% if restaurant.image_url %}
+                        <img src="{{ url_for('static', filename=restaurant.image_url) }}" 
+                            class="card-img-top" alt="{{ restaurant.name }}" 
+                            style="height: 200px; object-fit: cover;">
+                    {% else %}
+                        <img src="{{ url_for('static', filename='images/default_restaurant.jpg') }}" 
+                            class="card-img-top" alt="Default Restaurant" 
+                            style="height: 200px; object-fit: cover;">
+                    {% endif %}
+
+                    <div class="card-body">
+                        <h5 class="card-title">{{ restaurant.name }}</h5>
+                        <p class="card-text text-muted">{{ restaurant.description[:100] }}...</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="badge bg-primary">{{ restaurant.cuisine_type }}</span>
+                            {% if current_user.is_authenticated and current_user.role == 'customer' %}
+                                <a href="{{ url_for('customer.view_restaurant', restaurant_id=restaurant.id) }}" class="btn btn-outline-primary btn-sm">
+                                    View Menu
+                                </a>
+                            {% else %}
+                                <a href="{{ url_for('auth.login') }}" class="btn btn-outline-primary btn-sm">
+                                    Login to Order
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="text-center mt-5">
+            <a href="{{ url_for('restaurants') }}" class="btn btn-primary btn-lg">
+                View All Restaurants
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-5 banner text-white">
+    <div class="container text-center">
+        <h2 class="display-5 fw-bold mb-4">Ready to Order?</h2>
+        <p class="lead mb-4">Join thousands of satisfied customers and start ordering your favorite food today!</p>
+        {% if not current_user.is_authenticated %}
+            <a href="{{ url_for('auth.login') }}" class="btn btn-light btn-lg">
+                <i class="fas fa-sign-in-alt me-2"></i>Get Started
+            </a>
+        {% else %}
+            <a href="{{ url_for('restaurants') }}" class="btn btn-light btn-lg">
+                <i class="fas fa-utensils me-2"></i>Order Now
+            </a>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Restaurant Registration Modal -->
+<div class="modal fade" id="restaurantRegistrationModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Restaurant Owner Registration</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h6>For Restaurant Owners</h6>
+                        <p>Join JustEat as a restaurant partner and start receiving orders from customers.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-check text-success me-2"></i>Easy order management</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Real-time order tracking</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Customer reviews and ratings</li>
+                            <li><i class="fas fa-check text-success me-2"></i>Marketing tools</li>
+                            <li><i class="fas fa-check text-success me-2"></i>24/7 support</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6>Sample Restaurant Owner Credentials</h6>
+                        <div class="alert alert-info">
+                            <strong>Username:</strong> vikram_owner<br>
+                            <strong>Password:</strong> password123<br>
+                            <small class="text-muted">Use these credentials to login as a restaurant owner</small>
+                        </div>
+                        <div class="alert alert-info">
+                            <strong>Username:</strong> anita_owner<br>
+                            <strong>Password:</strong> password123<br>
+                            <small class="text-muted">Curry Leaf owner credentials</small>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="text-center">
+                    <p class="mb-3">Ready to get started?</p>
+                    <a href="{{ url_for('auth.login') }}" class="btn btn-primary btn-lg">
+                        <i class="fas fa-sign-in-alt me-2"></i>Login as Restaurant Owner
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
