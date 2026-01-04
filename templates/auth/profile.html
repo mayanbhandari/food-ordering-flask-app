@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}My Profile{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <h1 class="fw-bold">My Profile</h1>
+    <p class="text-muted mb-4">Manage your account information</p>
+
+    <div class="row g-4">
+        <!-- Personal Info Form -->
+        <div class="col-lg-8">
+            <div class="card shadow-sm border-0 rounded-3">
+                <div class="card-header bg-light fw-semibold">Personal Information</div>
+                <div class="card-body">
+                    <form method="POST" enctype="multipart/form-data">
+                        <!-- Profile Image Upload + Preview -->
+                        <div class="mb-4 text-center">
+                            <img 
+                                src="{{ url_for('static', filename=user.profile_image) if user.profile_image else url_for('static', filename='images/default-avatar.png') }}" 
+                                alt="Profile Image" 
+                                class="rounded-circle mb-3"
+                                style="width: 120px; height: 120px; object-fit: cover; border: 3px solid #e9ecef;">
+                            <div class="mt-2">
+                                <input type="file" class="form-control" name="profile_image" accept="image/*">
+                                <small class="text-muted d-block mt-1">Upload a new profile photo (optional)</small>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label class="form-label">First Name</label>
+                                <input type="text" class="form-control" name="first_name" value="{{ user.first_name }}">
+                            </div>
+                            <div class="col">
+                                <label class="form-label">Last Name</label>
+                                <input type="text" class="form-control" name="last_name" value="{{ user.last_name }}">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" name="email" value="{{ user.email }}">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Phone</label>
+                            <input type="text" class="form-control" name="phone" value="{{ user.phone or '' }}">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Address</label>
+                            <textarea class="form-control" name="address" rows="2">{{ user.address or '' }}</textarea>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-primary">Update Profile</button>
+                            <a href="{{ url_for('index') }}" class="btn btn-outline-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Account Info -->
+        <div class="col-lg-4">
+            <div class="card shadow-sm border-0 rounded-3 mb-4">
+                <div class="card-header bg-light fw-semibold">Account Information</div>
+                <div class="card-body">
+                    <p><strong>Username:</strong> {{ user.username }}</p>
+                    <p><strong>Role:</strong> 
+                        <span class="badge bg-primary">{{ user.role|capitalize }}</span>
+                    </p>
+                    <p><strong>Member Since:</strong> {{ user.created_at.strftime('%B %d, %Y') if user.created_at else 'N/A' }}</p>
+                    <a href="{{ url_for('auth.reset_password') }}" class="btn btn-warning btn-sm mt-2">
+                        <i class="bi bi-key"></i> Change Password
+                    </a>
+                </div>
+            </div>
+
+            <div class="card shadow-sm border-0 rounded-3">
+                <div class="card-header bg-light fw-semibold">Quick Actions</div>
+                <div class="card-body d-grid gap-2">
+                    {% if user.role == 'customer' %}
+                        <a href="{{ url_for('customer.orders') }}" class="btn btn-outline-primary">View Orders</a>
+                        <a href="{{ url_for('customer.feedback') }}" class="btn btn-outline-secondary">Send Feedback</a>
+                    {% elif user.role == 'restaurant_owner' %}
+                        <a href="{{ url_for('restaurant.dashboard') }}" class="btn btn-outline-primary">Restaurant Dashboard</a>
+                        <a href="{{ url_for('restaurant.manage_menu_all', restaurant_id=user.restaurant.id if user.restaurant else 0) }}" class="btn btn-outline-secondary">Manage Menu</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
