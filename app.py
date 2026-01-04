@@ -91,6 +91,13 @@ def create_app(config_name='default'):
     app.register_blueprint(api_bp, url_prefix='/api')
     app.register_blueprint(admin_bp, url_prefix='/admin')
 
+    with app.app_context():
+        try:
+            db.create_all()
+            logger.info("Database tables ensured (create_all).")
+        except Exception:
+            logger.error("Database initialization failed", exc_info=True)
+
     # Initialize advanced features
     try:
         from monitoring import init_performance_monitoring
@@ -202,9 +209,7 @@ def create_app(config_name='default'):
 # App Entry Point
 app = create_app()
 
-if __name__ == '__main__':
-    with app.app_context():
-        from models import db
-        db.create_all()
+if __name__ == "__main__":
     logger.info("Starting Flask Application...")
     app.run(debug=True)
+
