@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+        }
+        .content {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 0 0 10px 10px;
+        }
+        .order-details {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .order-item {
+            border-bottom: 1px solid #eee;
+            padding: 10px 0;
+        }
+        .order-item:last-child {
+            border-bottom: none;
+        }
+        .total {
+            font-weight: bold;
+            font-size: 18px;
+            color: #007bff;
+        }
+        .button {
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>✅ Order Confirmed!</h1>
+    </div>
+    
+    <div class="content">
+        <h2>Hi {{ order.customer.first_name }},</h2>
+        
+        <p>Your order has been confirmed and is being prepared!</p>
+        
+        <div class="order-details">
+            <h3>Order Details</h3>
+            <p><strong>Order Number:</strong> {{ order.order_number }}</p>
+            <p><strong>Restaurant:</strong> {{ order.restaurant.name }}</p>
+            <p><strong>Order Date:</strong> {{ order.created_at.strftime('%B %d, %Y at %I:%M %p') }}</p>
+            
+            <h4>Items Ordered:</h4>
+            {% for item in order.order_items %}
+            <div class="order-item">
+                <strong>{{ item.menu_item.name }}</strong><br>
+                Quantity: {{ item.quantity }} × ₹{{ "%.2f"|format(item.price) }} = ₹{{ "%.2f"|format(item.price * item.quantity) }}
+            </div>
+            {% endfor %}
+            
+            <div class="total">
+                Total: ₹{{ "%.2f"|format(order.total_amount) }}
+            </div>
+        </div>
+        
+        <p>We'll notify you when your order is ready for pickup!</p>
+        
+        <a href="{{ url_for('customer.view_order', order_id=order.id, _external=True) }}" class="button">Track Your Order</a>
+        
+        <p>Thank you for choosing JustEat!</p>
+        
+        <p>Best regards,<br>The JustEat Team</p>
+    </div>
+    
+    <div class="footer">
+        <p>This email was sent to {{ order.customer.email }}</p>
+        <p>© 2025 JustEat. All rights reserved.</p>
+    </div>
+</body>
+</html>

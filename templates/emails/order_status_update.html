@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Status Update</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background: linear-gradient(135deg, #ffc107, #e0a800);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+        }
+        .content {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 0 0 10px 10px;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .status-pending { background: #ffc107; color: white; }
+        .status-confirmed { background: #17a2b8; color: white; }
+        .status-preparing { background: #007bff; color: white; }
+        .status-ready { background: #28a745; color: white; }
+        .status-delivered { background: #28a745; color: white; }
+        .status-cancelled { background: #dc3545; color: white; }
+        .order-details {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .button {
+            display: inline-block;
+            background: #007bff;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📱 Order Status Update</h1>
+    </div>
+    
+    <div class="content">
+        <h2>Hi {{ order.customer.first_name }},</h2>
+        
+        <p>Your order status has been updated!</p>
+        
+        <div class="order-details">
+            <h3>Order Details</h3>
+            <p><strong>Order Number:</strong> {{ order.order_number }}</p>
+            <p><strong>Restaurant:</strong> {{ order.restaurant.name }}</p>
+            <p><strong>Updated:</strong> {{ order.updated_at.strftime('%B %d, %Y at %I:%M %p') }}</p>
+            
+            <h4>Current Status:</h4>
+            <span class="status-badge status-{{ order.status }}">{{ order.status.title() }}</span>
+            
+            {% if order.status == 'confirmed' %}
+                <p>Your order has been confirmed and the restaurant is preparing your food.</p>
+            {% elif order.status == 'preparing' %}
+                <p>Your order is being prepared by the restaurant.</p>
+            {% elif order.status == 'ready' %}
+                <p>Your order is ready for pickup!</p>
+            {% elif order.status == 'delivered' %}
+                <p>Your order has been delivered. Enjoy your meal!</p>
+            {% elif order.status == 'cancelled' %}
+                <p>Your order has been cancelled. If you have any questions, please contact the restaurant.</p>
+            {% endif %}
+        </div>
+        
+        <a href="{{ url_for('customer.view_order', order_id=order.id, _external=True) }}" class="button">View Order Details</a>
+        
+        <p>Thank you for choosing JustEat!</p>
+        
+        <p>Best regards,<br>The JustEat Team</p>
+    </div>
+    
+    <div class="footer">
+        <p>This email was sent to {{ order.customer.email }}</p>
+        <p>© 2025 JustEat. All rights reserved.</p>
+    </div>
+</body>
+</html>
