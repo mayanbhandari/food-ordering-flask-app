@@ -96,10 +96,14 @@ def create_app(config_name='default'):
         try:
             db.create_all()
             from seed_data import seed_data
-            seed_data()
-            logger.info("Database tables ensured and seed data added.")
+            seeded = seed_data()
+            if seeded:
+                logger.info("Database seeded successfully.")
+            else:
+                logger.info("Database already seeded. Skipping.")
         except Exception:
             logger.error("Database initialization failed", exc_info=True)
+
 
 
     # Initialize advanced features
